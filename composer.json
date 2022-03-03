@@ -4,7 +4,7 @@
     "keywords": [
         "soyhuce",
         "laravel",
-        "laravel-testing"
+        "testing"
     ],
     "homepage": "https://github.com/soyhuce/laravel-testing",
     "license": "MIT",
@@ -17,8 +17,11 @@
     ],
     "require": {
         "php": "^8.1",
-        "spatie/laravel-package-tools": "^1.9.2",
-        "illuminate/contracts": "^9.0"
+        "illuminate/database": "^9.0",
+        "illuminate/support": "^9.0",
+        "illuminate/testing": "^9.0",
+        "phpunit/phpunit": "^9.5",
+        "spatie/invade": "^1.0"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.6",
@@ -34,9 +37,9 @@
     },
     "autoload": {
         "psr-4": {
-            "Soyhuce\\Testing\\": "src",
-            "Soyhuce\\Testing\\Database\\Factories\\": "database/factories"
-        }
+            "Soyhuce\\Testing\\": "src"
+        },
+        "files": ["src/helpers.php"]
     },
     "autoload-dev": {
         "psr-4": {
@@ -55,16 +58,17 @@
         ]
     },
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true
+        }
     },
     "extra": {
         "laravel": {
             "providers": [
                 "Soyhuce\\Testing\\TestingServiceProvider"
-            ],
-            "aliases": {
-                "Testing": "Soyhuce\\Testing\\Facades\\Testing"
-            }
+            ]
         }
     },
     "minimum-stability": "dev",

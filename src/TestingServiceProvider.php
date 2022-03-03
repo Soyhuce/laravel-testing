@@ -2,24 +2,20 @@
 
 namespace Soyhuce\Testing;
 
-use Soyhuce\Testing\Commands\TestingCommand;
-use Spatie\LaravelPackageTools\Package;
-use Spatie\LaravelPackageTools\PackageServiceProvider;
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Testing\TestResponse;
+use Soyhuce\Testing\TestResponse\ContractAssertions;
+use Soyhuce\Testing\TestResponse\DataAssertions;
+use Soyhuce\Testing\TestResponse\JsonAssertions;
+use Soyhuce\Testing\TestResponse\ViewAssertions;
 
-class TestingServiceProvider extends PackageServiceProvider
+class TestingServiceProvider extends ServiceProvider
 {
-    public function configurePackage(Package $package): void
+    public function boot(): void
     {
-        /*
-         * This class is a Package Service Provider
-         *
-         * More info: https://github.com/spatie/laravel-package-tools
-         */
-        $package
-            ->name('laravel-testing')
-            ->hasConfigFile()
-            ->hasViews()
-            ->hasMigration('create_laravel-testing_table')
-            ->hasCommand(TestingCommand::class);
+        TestResponse::mixin(new ContractAssertions());
+        TestResponse::mixin(new DataAssertions());
+        TestResponse::mixin(new JsonAssertions());
+        TestResponse::mixin(new ViewAssertions());
     }
 }
