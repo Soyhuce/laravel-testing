@@ -2,9 +2,9 @@
 
 namespace Soyhuce\Testing;
 
+use Soyhuce\Testing\Commands\TestingCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Soyhuce\Testing\Commands\TestingCommand;
 
 class TestingServiceProvider extends PackageServiceProvider
 {
