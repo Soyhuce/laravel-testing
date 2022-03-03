@@ -1,8 +1,6 @@
 <?php declare(strict_types=1);
 
 $finder = PhpCsFixer\Finder::create()->in([
-    'config',
-    'database',
     'src',
     'tests',
 ]);
