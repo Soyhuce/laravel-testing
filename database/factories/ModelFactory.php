@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace VendorName\Skeleton\Database\Factories;
+namespace Soyhuce\Testing\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 

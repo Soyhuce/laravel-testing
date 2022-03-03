@@ -1,16 +1,16 @@
 <?php declare(strict_types=1);
 
-namespace VendorName\Skeleton\Facades;
+namespace Soyhuce\Testing\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \VendorName\Skeleton\Skeleton
+ * @see \Soyhuce\Testing\Testing
  */
-class Skeleton extends Facade
+class Testing extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return 'skeleton';
+        return 'laravel-testing';
     }
 }

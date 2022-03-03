@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace VendorName\Skeleton\Commands;
+namespace Soyhuce\Testing\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class TestingCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'laravel-testing';
 
     public $description = 'My command';
 
