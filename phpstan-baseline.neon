@@ -1,0 +1,22 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Cannot call method setParameter\\(\\) on Illuminate\\\\Routing\\\\Route\\|null\\.$#"
+			count: 1
+			path: src/FormRequest/TestFormRequest.php
+
+		-
+			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertArrayHasKey\\(\\) with arguments string, Illuminate\\\\Support\\\\Collection\\<string, array\\<string\\>\\> and non\\-empty\\-string will always evaluate to false\\.$#"
+			count: 1
+			path: src/FormRequest/TestValidationResult.php
+
+		-
+			message: "#^Parameter \\#2 \\$transformation of method Soyhuce\\\\Testing\\\\Match\\\\ValueMatcher\\:\\:match\\(\\) expects callable\\(\\)\\: mixed, array\\<0\\|1\\|string, mixed\\> given\\.$#"
+			count: 1
+			path: src/Match/Matcher.php
+
+		-
+			message: "#^Method Soyhuce\\\\Testing\\\\TestResponse\\\\DataAssertions\\:\\:assertDataPath\\(\\) invoked with 2 parameters, 0 required\\.$#"
+			count: 1
+			path: src/TestResponse/DataAssertions.php
+
