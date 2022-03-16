@@ -38,7 +38,7 @@ class TestFormRequest
         return new TestValidationResult($validator);
     }
 
-    public function by(?Authenticatable $user = null, ?string $guard = null): self
+    public function by(Authenticatable $user, ?string $guard = null): self
     {
         $this->request->setUserResolver(fn () => $user);
         Auth::guard($guard)->setUser($user);
