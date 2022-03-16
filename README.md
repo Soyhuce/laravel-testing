@@ -125,7 +125,7 @@ $testFormRequest = $this->createRequest(CreateUserRequest::class);
 
 `$testFormRequest` have some methods to check authorization and validation of the request.
 
-- `TestFormRequest::by(Authenticable $user)` : set authenticated user in the request
+- `TestFormRequest::by(Authenticable $user, ?string $guard = null)` : set authenticated user in the request
 - `TestFormRequest::withParams(array $params)` : set route parameters
 - `TestFormRequest::withParam(string $param, mixed $value)` : set a route parameter
 - `TestFormRequest::validate(array $data): TestValidationResult` : get Validation result
