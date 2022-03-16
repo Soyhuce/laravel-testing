@@ -4,6 +4,7 @@ namespace Soyhuce\Testing\FormRequest;
 
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 use PHPUnit\Framework\Assert;
 use Symfony\Component\HttpFoundation\InputBag;
@@ -37,9 +38,10 @@ class TestFormRequest
         return new TestValidationResult($validator);
     }
 
-    public function by(?Authenticatable $user = null): self
+    public function by(?Authenticatable $user = null, ?string $guard = null): self
     {
         $this->request->setUserResolver(fn () => $user);
+        Auth::guard($guard)->setUser($user);
 
         return $this;
     }

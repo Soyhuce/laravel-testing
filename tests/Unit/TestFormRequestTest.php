@@ -4,10 +4,12 @@ namespace Soyhuce\Testing\Tests\Unit;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User;
+use Illuminate\Support\Facades\Hash;
 use PHPUnit\Framework\AssertionFailedError;
 use PHPUnit\Framework\ExpectationFailedException;
 use Soyhuce\Testing\Concerns\TestsFormRequests;
-use Soyhuce\Testing\Tests\Fixtures\CreateUserRequest;
+use Soyhuce\Testing\Tests\Fixtures\FormRequests\CreateUserRequest;
+use Soyhuce\Testing\Tests\Fixtures\FormRequests\UpdatePasswordRequest;
 use Soyhuce\Testing\Tests\TestCase;
 
 /**
@@ -124,5 +126,23 @@ class TestFormRequestTest extends TestCase
         $this->createRequest(CreateUserRequest::class)
             ->by(new User(['id' => 1]))
             ->assertUnauthorized();
+    }
+
+    /**
+     * @test
+     * @covers ::by
+     */
+    public function theUserIsInjectedInAuthGuard(): void
+    {
+        Model::unguard();
+
+        $this->createRequest(UpdatePasswordRequest::class)
+            ->by(new User(['id' => 1, 'password' => Hash::make('password')]))
+            ->validate([
+                'current_password' => 'password',
+                'password' => 'new-password',
+                'password_confirmation' => 'new-password',
+            ])
+            ->assertPasses();
     }
 }
