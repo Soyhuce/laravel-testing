@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Soyhuce\Testing\Tests\Fixtures;
+namespace Soyhuce\Testing\Tests\Fixtures\FormRequests;
 
 use Illuminate\Foundation\Http\FormRequest;
 

@@ -4,7 +4,7 @@ namespace Soyhuce\Testing\Tests\Unit;
 
 use Soyhuce\Testing\Concerns\TestsFormRequests;
 use Soyhuce\Testing\FormRequest\TestFormRequest;
-use Soyhuce\Testing\Tests\Fixtures\CreateUserRequest;
+use Soyhuce\Testing\Tests\Fixtures\FormRequests\CreateUserRequest;
 use Soyhuce\Testing\Tests\TestCase;
 
 /**
