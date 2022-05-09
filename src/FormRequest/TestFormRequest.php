@@ -5,6 +5,7 @@ namespace Soyhuce\Testing\FormRequest;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Traits\Macroable;
 use Illuminate\Validation\ValidationException;
 use PHPUnit\Framework\Assert;
 use Symfony\Component\HttpFoundation\InputBag;
@@ -14,6 +15,8 @@ use Symfony\Component\HttpFoundation\InputBag;
  */
 class TestFormRequest
 {
+    use Macroable;
+
     public function __construct(
         private FormRequest $request,
     ) {
