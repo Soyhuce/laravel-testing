@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-testing` will be documented in this file.
 
+## 1.1.1 - 2022-05-11
+
+## What's Changed
+
+- Use IsEqual for object comparison in CollectionEquals by @bastien-phi in https://github.com/Soyhuce/laravel-testing/pull/5
+
+**Full Changelog**: https://github.com/Soyhuce/laravel-testing/compare/1.1.0...1.1.1
+
 ## 1.1.0 - 2022-05-09
 
 ## What's Changed
