@@ -5,8 +5,10 @@ namespace Soyhuce\Testing\Constraints;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use PHPUnit\Framework\Constraint\Constraint;
+use PHPUnit\Framework\Constraint\IsEqual;
 use PHPUnit\Framework\Constraint\IsIdentical;
 use SebastianBergmann\Comparator\ComparisonFailure;
+use function is_object;
 
 class CollectionEquals extends Constraint
 {
@@ -53,7 +55,11 @@ class CollectionEquals extends Constraint
         }
 
         foreach ($this->value as $key => $value) {
-            $constraint = $value instanceof Model ? new IsModel($value) : new IsIdentical($value);
+            $constraint = match (true) {
+                $value instanceof Model => new IsModel($value),
+                is_object($value) => new IsEqual($value),
+                default => new IsIdentical($value),
+            };
 
             if (!$constraint->evaluate($other->get($key), returnResult: true)) {
                 return false;

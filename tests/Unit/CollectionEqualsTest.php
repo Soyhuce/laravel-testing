@@ -2,6 +2,7 @@
 
 namespace Soyhuce\Testing\Tests\Unit;
 
+use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Collection;
@@ -26,6 +27,10 @@ class CollectionEqualsTest extends TestCase
             [new Collection(['a' => 1, 'b' => 2, 'c' => 3]), new Collection(['a' => 1, 'b' => 2, 'c' => 3])],
             [['a' => 1, 'b' => 2, 'c' => 3], new Collection(['a' => 1, 'b' => 2, 'c' => 3])],
             [new Collection([new User(['id' => 1, 'name' => 'John'])]),  new Collection([new User(['id' => 1, 'name' => 'Peter'])])],
+            [
+                new Collection([CarbonImmutable::create(2022, 5, 11)]),
+                new Collection([CarbonImmutable::createFromFormat('!Y-m-d', '2022-05-11')]),
+            ],
         ];
     }
 
