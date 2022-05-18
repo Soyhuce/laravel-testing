@@ -133,6 +133,7 @@ $testFormRequest = $this->createRequest(CreateUserRequest::class);
 - `TestFormRequest::assertUnauthorized()` : assert that the request is unauthorized
 - `TestValidationResult::assertPasses()` : assert that the validation passes
 - `TestValidationResult::assertFails(array $errors = [])` : assert that the validation fails
+- `TestValidationResult::assertValidated(array $expected)` : assert that the attributes and values that passed validation are the expected ones
 
 For exemple :
 

@@ -37,6 +37,25 @@ class TestFormRequestTest extends TestCase
      * @test
      * @covers ::validate
      */
+    public function theFormRequestIsValidatesValidatedDaa(): void
+    {
+        $this->createRequest(CreateUserRequest::class)
+            ->validate([
+                'name' => 'John Doe',
+                'email' => 'john.doe@email.com',
+                'foo' => 'bar',
+            ])
+            ->assertPasses()
+            ->assertValidated([
+                'name' => 'John Doe',
+                'email' => 'john.doe@email.com',
+            ]);
+    }
+
+    /**
+     * @test
+     * @covers ::validate
+     */
     public function theFormRequestFailsToBeInvalid(): void
     {
         $this->expectException(ExpectationFailedException::class);
