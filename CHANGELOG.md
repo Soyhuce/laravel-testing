@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-testing` will be documented in this file.
 
+## 1.1.2 - 2022-05-18
+
+## What's Changed
+
+- Add TestValidationResult::assertValidated method by @bastien-phi in https://github.com/Soyhuce/laravel-testing/pull/6
+
+**Full Changelog**: https://github.com/Soyhuce/laravel-testing/compare/1.1.1...1.1.2
+
 ## 1.1.1 - 2022-05-11
 
 ## What's Changed
