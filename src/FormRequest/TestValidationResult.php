@@ -98,6 +98,16 @@ class TestValidationResult
     }
 
     /**
+     * @param array<array-key, mixed> $expected
+     */
+    public function assertValidated(array $expected): self
+    {
+        Assert::assertSame($expected, $this->validator->validated());
+
+        return $this;
+    }
+
+    /**
      * @return array<array-key, mixed>
      */
     private function getData(): array
