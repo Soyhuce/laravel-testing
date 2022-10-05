@@ -39,7 +39,7 @@ class TestValidationResult
     }
 
     /**
-     * @param array<array-key, string> $errors
+     * @param array<array-key, array<int, string>|string> $errors
      */
     public function assertFails(array $errors = []): self
     {
@@ -61,35 +61,38 @@ class TestValidationResult
             json_encode($validationMessages, self::JSON_OPTIONS) . PHP_EOL;
 
         foreach ($errors as $key => $value) {
+            $attribute = is_int($key) ? $value : $key;
             Assert::assertArrayHasKey(
-                is_int($key) ? $value : $key,
+                $attribute,
                 $validationMessages,
                 <<<EOT
-                Failed to find a validation error in the response for key: '{$value}'
+                Failed to find a validation error in the response for key: '{$attribute}'
                 
                 {$errorMessage}
                 EOT
             );
 
             if (!is_int($key)) {
-                $hasError = false;
+                foreach (Arr::wrap($value) as $expectedMessage) {
+                    $hasError = false;
 
-                foreach (Arr::wrap($validationMessages[$key]) as $jsonErrorMessage) {
-                    if (Str::contains($jsonErrorMessage, $value)) {
-                        $hasError = true;
+                    foreach (Arr::wrap($validationMessages[$key]) as $jsonErrorMessage) {
+                        if (Str::contains($jsonErrorMessage, $expectedMessage)) {
+                            $hasError = true;
 
-                        break;
+                            break;
+                        }
                     }
-                }
 
-                if (!$hasError) {
-                    Assert::fail(
-                        <<<EOT
-                        Failed to find a validation error in the response for key and message: '{$key}' => '{$value}'
-                        
-                        {$errorMessage} 
-                        EOT
-                    );
+                    if (!$hasError) {
+                        Assert::fail(
+                            <<<EOT
+                            Failed to find a validation error in the response for key and message: '{$key}' => '{$expectedMessage}'
+                            
+                            {$errorMessage} 
+                            EOT
+                        );
+                    }
                 }
             }
         }

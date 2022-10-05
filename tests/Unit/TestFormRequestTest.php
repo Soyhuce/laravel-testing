@@ -94,6 +94,25 @@ class TestFormRequestTest extends TestCase
      * @test
      * @covers ::validate
      */
+    public function theFormRequestIsInvalidWithArrayOfMessages(): void
+    {
+        $this->createRequest(CreateUserRequest::class)
+            ->validate([
+                'name' => 'John Doe',
+                'email' => 12,
+            ])
+            ->assertFails([
+                'email' => [
+                    'The email must be a string.',
+                    'The email must be a valid email address.',
+                ],
+            ]);
+    }
+
+    /**
+     * @test
+     * @covers ::validate
+     */
     public function theFormRequestVerifiesTheMessage(): void
     {
         $this->expectException(AssertionFailedError::class);
@@ -105,6 +124,29 @@ class TestFormRequestTest extends TestCase
             ])
             ->assertFails([
                 'name' => 'foo',
+            ]);
+    }
+
+    /**
+     * @test
+     * @covers ::validate
+     */
+    public function theFormRequestVerifiesAnArrayOfMessages(): void
+    {
+        $this->expectException(AssertionFailedError::class);
+        $this->expectExceptionMessageMatches(
+            '/Failed to find a validation error in the response for key and message: \'email\' => \'The email must be a string.\'/'
+        );
+
+        $this->createRequest(CreateUserRequest::class)
+            ->validate([
+                'name' => 'John Doe',
+                'email' => 'john doe',
+            ])
+            ->assertFails([
+                'email' => [
+                    'The email must be a string.',
+                ],
             ]);
     }
 
