@@ -148,12 +148,15 @@ $this->createRequest(CreateUserRequest::class)
 $this->createRequest(CreateUserRequest::class)
     ->validate([
         'name' => null,
-        'email' => 'john doe',
+        'email' => 12,
     ])
     //->assertFails() We can check that the validation fails without defining the fields nor error messages
     ->assertFails([
         'name' => 'The name field is required.',
-        'email' => 'The email must be a valid email address.',
+        'email' => [
+            'The email must be a string.',
+            'The email must be a valid email address.',
+        ]
     ]);
 
 $this->createRequest(CreateUserRequest::class)
