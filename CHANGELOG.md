@@ -2,6 +2,17 @@
 
 All notable changes to `laravel-testing` will be documented in this file.
 
+## 1.1.3 - 2022-10-05
+
+### What's Changed
+
+- Bump dependabot/fetch-metadata from 1.3.1 to 1.3.3 by @dependabot in https://github.com/Soyhuce/laravel-testing/pull/7
+- Bump actions/checkout from 2 to 3 by @dependabot in https://github.com/Soyhuce/laravel-testing/pull/8
+- Bump dependabot/fetch-metadata from 1.3.3 to 1.3.4 by @dependabot in https://github.com/Soyhuce/laravel-testing/pull/9
+- Allow multiple messages for TestValidationResult::failed by @bastien-phi in https://github.com/Soyhuce/laravel-testing/pull/10
+
+**Full Changelog**: https://github.com/Soyhuce/laravel-testing/compare/1.1.2...1.1.3
+
 ## 1.1.2 - 2022-05-18
 
 ## What's Changed
