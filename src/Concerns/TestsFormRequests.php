@@ -14,7 +14,10 @@ use Symfony\Component\HttpFoundation\Request as SymfonyRequest;
 trait TestsFormRequests
 {
     /**
+     * @template TFormRequest of \Illuminate\Foundation\Http\FormRequest
+     * @param class-string<TFormRequest> $requestClass
      * @param array<string, mixed> $headers
+     * @return TestFormRequest<TFormRequest>
      */
     protected function createRequest(string $requestClass, array $headers = []): TestFormRequest
     {
