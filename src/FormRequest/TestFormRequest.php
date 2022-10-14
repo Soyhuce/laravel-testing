@@ -46,7 +46,7 @@ class TestFormRequest
         return new TestValidationResult($validator);
     }
 
-    public function by(Authenticatable $user, ?string $guard = null): self
+    public function by(Authenticatable $user, ?string $guard = null): static
     {
         $this->request->setUserResolver(fn () => $user);
         Auth::guard($guard)->setUser($user);
@@ -57,7 +57,7 @@ class TestFormRequest
     /**
      * @param array<string, mixed> $params
      */
-    public function withParams(array $params): self
+    public function withParams(array $params): static
     {
         foreach ($params as $param => $value) {
             $this->withParam($param, $value);
@@ -66,7 +66,7 @@ class TestFormRequest
         return $this;
     }
 
-    public function withParam(string $param, mixed $value): self
+    public function withParam(string $param, mixed $value): static
     {
         $this->request->route()->setParameter($param, $value);
 
