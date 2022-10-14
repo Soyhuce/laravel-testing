@@ -12,11 +12,16 @@ use Symfony\Component\HttpFoundation\InputBag;
 
 /**
  * @see https://gist.github.com/colindecarlo/9ba9bd6524127fee7580ae66c6d4709d
+ *
+ * @template TRequest of \Illuminate\Foundation\Http\FormRequest
  */
 class TestFormRequest
 {
     use Macroable;
 
+    /**
+     * @param TRequest $request
+     */
     public function __construct(
         private FormRequest $request,
     ) {
@@ -82,5 +87,13 @@ class TestFormRequest
             invade($this->request)->passesAuthorization(),
             'The provided user is authorized by this request'
         );
+    }
+
+    /**
+     * @return TRequest
+     */
+    public function request(): FormRequest
+    {
+        return $this->request;
     }
 }
