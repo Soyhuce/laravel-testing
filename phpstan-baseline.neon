@@ -21,11 +21,6 @@ parameters:
 			path: src/Match/Matcher.php
 
 		-
-			message: "#^Call to an undefined method Soyhuce\\\\Testing\\\\TestResponse\\\\DataAssertions\\:\\:assertJsonPathMissing\\(\\)\\.$#"
-			count: 2
-			path: src/TestResponse/DataAssertions.php
-
-		-
 			message: "#^Method Soyhuce\\\\Testing\\\\TestResponse\\\\DataAssertions\\:\\:assertDataPath\\(\\) invoked with 2 parameters, 0 required\\.$#"
 			count: 1
 			path: src/TestResponse/DataAssertions.php
