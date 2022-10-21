@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-testing` will be documented in this file.
 
+## 1.2.0 - 2022-10-21
+
+### What's Changed
+
+- Tests on PHP 8.2 by @bastien-phi in https://github.com/Soyhuce/laravel-testing/pull/12
+
+**Full Changelog**: https://github.com/Soyhuce/laravel-testing/compare/1.1.4...1.2.0
+
 ## 1.1.3 - 2022-10-05
 
 ### What's Changed
