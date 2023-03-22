@@ -86,7 +86,7 @@ class TestFormRequestTest extends TestCase
             ])
             ->assertFails([
                 'name' => 'The name field is required.',
-                'email' => 'The email must be a valid email address.',
+                'email' => 'The email field must be a valid email address.',
             ]);
     }
 
@@ -103,8 +103,8 @@ class TestFormRequestTest extends TestCase
             ])
             ->assertFails([
                 'email' => [
-                    'The email must be a string.',
-                    'The email must be a valid email address.',
+                    'The email field must be a string.',
+                    'The email field must be a valid email address.',
                 ],
             ]);
     }
