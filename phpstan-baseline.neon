@@ -21,6 +21,36 @@ parameters:
 			path: src/Match/Matcher.php
 
 		-
+			message: "#^Call to an undefined method Mockery\\\\ExpectationInterface\\:\\:andReturnUsing\\(\\)\\.$#"
+			count: 2
+			path: src/Mock/PendingActionMock.php
+
+		-
+			message: "#^Call to an undefined method Mockery\\\\ExpectationInterface\\:\\:never\\(\\)\\.$#"
+			count: 1
+			path: src/Mock/PendingActionMock.php
+
+		-
+			message: "#^Call to an undefined method Mockery\\\\ExpectationInterface\\:\\:withArgs\\(\\)\\.$#"
+			count: 1
+			path: src/Mock/PendingActionMock.php
+
+		-
+			message: "#^Call to an undefined method Mockery\\\\ExpectationInterface\\:\\:zeroOrMoreTimes\\(\\)\\.$#"
+			count: 1
+			path: src/Mock/PendingActionMock.php
+
+		-
+			message: "#^Call to an undefined method Mockery\\\\ExpectationInterface\\|Mockery\\\\HigherOrderMessage\\:\\:andReturnUsing\\(\\)\\.$#"
+			count: 1
+			path: src/Mock/PendingActionMock.php
+
+		-
+			message: "#^Property Soyhuce\\\\Testing\\\\Mock\\\\PendingActionMock\\:\\:\\$mock \\(Mockery\\\\MockInterface\\) does not accept Mockery\\\\LegacyMockInterface\\.$#"
+			count: 1
+			path: src/Mock/PendingActionMock.php
+
+		-
 			message: "#^Access to an undefined property Soyhuce\\\\Testing\\\\TestResponse\\\\ContractAssertions\\:\\:\\$baseResponse\\.$#"
 			count: 1
 			path: src/TestResponse/ContractAssertions.php
