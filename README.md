@@ -302,6 +302,49 @@ $this->mock(CreateUser::class)
     ->once();
 ```
 
+### ActionMock
+
+The trait `MocksActions` provides a `mockAction` method to simply mock an action. By convention, an action is a class with a `execute` method.
+
+Under the hood, it uses `Mockery::mock`.
+
+It allows to easily define your action's expectations. Instead of  
+```php
+$user = User::factory()->createOne();
+
+$this->mock(DeleteUser::class)
+    ->shouldReceive('execute')
+    ->withArgs(function(User $executed) use ($user) {
+        $this->assertIsModel($user, $executed);
+        
+        return true;
+    })
+    ->once();
+```
+you can write
+```php
+$user = User::factory()->createOne();
+
+$this->mockAction(DeleteUser::class)
+   ->with($user);
+```
+
+You can also define the return value and capture it to use it in your test.
+
+```php
+$this->mockAction(CreateUser::class)
+    ->with(new UserData(email: 'john.doe@email.com', password: 'password'))
+    ->returns(fn() => User::factory()->createOne())
+    ->in($user);
+
+$this->postJson('register', ['email' => 'john.doe@email.com', 'password' => 'password'])
+    ->assertCreated()
+    ->assertJson([
+        'id' => $user->id,
+        'name' => $user->name,
+        'email' => $user->email,
+    ]);
+```
 
 ### Helpers
 

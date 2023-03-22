@@ -22,7 +22,9 @@ class Matcher
                     $value = self::isModel($value);
                 } elseif ($value instanceof Collection) {
                     $value = self::collectionEquals($value);
-                }
+                } elseif (class_exists(\Spatie\DataTransferObject\DataTransferObject::class) && $value instanceof \Spatie\DataTransferObject\DataTransferObject) {
+                    $value = self::of($value::class)->properties(...$value->all())->toClosure();
+                } // TODO : drop support for Spatie DTO
 
                 if (is_callable($value)) {
                     $result = $value($args[$key]);
