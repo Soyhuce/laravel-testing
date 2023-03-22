@@ -190,61 +190,6 @@ $this->createResponse(UserResource::make($user))
     ]);
 ```
 
-### Mocks
-
-A trait SimpleMock is available to create simple mocks. It allows you to mock a single method. If you need more, please use something else. (`Mockery\Mock` for exemple)
-
-```php
-class BaseClassMock extends BaseClass
-{
-    use Soyhuce\Testing\Mock\SimpleMock;
-
-    protected static function abstract(): string
-    {
-        return BaseClass::class;
-    }
-    
-    // Mocked method
-    public function execute(string $param): string
-    {
-        return $this->verifyAndReturns($param);
-        // If the method does not return anything, we will use $this->verifies($params)
-    }
-}
-```
-
-The mock is automatically registered in the service container with its `abstract` key. In you test, you can then use it like :
-
-```php
-/**
- * @test
- */
-public function returnValueCanBeDefined()
-{
-    BaseClassMock::setUp()
-        ->calledWith('foo')
-        ->returns('bar');
-
-    $value = app(BaseClass::class)->executeAndReturns('foo'); // bar
-}
-```
-
-or
-
-```php
-public function testAction()
-{
-    $subAction = SubActionMock::setUp()->calledWith('foo')->returns('bar');
-
-    $action = new Action($subAction);
-
-    $action->execute('foo');
-}
-```
-
-The mock will check that it was correctly called. 
-This can be deactivated defining the property `$ensuresWasCalled` to `false`.
-
 ### Matcher
 
 Let's take this test
