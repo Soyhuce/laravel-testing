@@ -2,6 +2,16 @@
 
 All notable changes to `laravel-testing` will be documented in this file.
 
+## 2.0.0 - 2023-03-23
+
+### What's Changed
+
+- Drop simple mock by @bastien-phi in https://github.com/Soyhuce/laravel-testing/pull/18
+- Add MocksActions by @bastien-phi in https://github.com/Soyhuce/laravel-testing/pull/19
+- Add phpunit 10 support by @bastien-phi in https://github.com/Soyhuce/laravel-testing/pull/20
+
+**Full Changelog**: https://github.com/Soyhuce/laravel-testing/compare/1.3.0...2.0.0
+
 ## 1.3.0 - 2023-02-03
 
 ### What's Changed
