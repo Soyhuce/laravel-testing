@@ -2,6 +2,12 @@
 
 All notable changes to `laravel-testing` will be documented in this file.
 
+## 2.0.1 - 2023-03-23
+
+Fix PHPUnit 10 support
+
+**Full Changelog**: https://github.com/Soyhuce/laravel-testing/compare/2.0.0...2.0.1
+
 ## 2.0.0 - 2023-03-23
 
 ### What's Changed
