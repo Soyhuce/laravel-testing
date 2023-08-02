@@ -13,7 +13,7 @@ class FileRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'file' => ['required', 'file', Rule::imageFile()],
+            'file' => ['required', 'file', 'image'],
         ];
     }
 }
