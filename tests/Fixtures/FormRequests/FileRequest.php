@@ -3,7 +3,6 @@
 namespace Soyhuce\Testing\Tests\Fixtures\FormRequests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
 class FileRequest extends FormRequest
 {
