@@ -4,6 +4,7 @@ namespace Soyhuce\Testing\FormRequest;
 
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Traits\Macroable;
 use Illuminate\Validation\ValidationException;
@@ -30,7 +31,7 @@ class TestFormRequest
     /**
      * @param array<array-key, mixed> $data
      */
-    public function validate(array $data): TestValidationResult
+    public function validate(array $data = []): TestValidationResult
     {
         $this->request->request = new InputBag($data);
 
@@ -69,6 +70,25 @@ class TestFormRequest
     public function withParam(string $param, mixed $value): static
     {
         $this->request->route()->setParameter($param, $value);
+
+        return $this;
+    }
+
+    /**
+     * @param array<string, mixed> $files
+     */
+    public function withFiles(array $files): static
+    {
+        foreach ($files as $file => $value) {
+            $this->withFile($file, $value);
+        }
+
+        return $this;
+    }
+
+    public function withFile(string $file, UploadedFile $value): static
+    {
+        $this->request->files->set($file, $value);
 
         return $this;
     }
