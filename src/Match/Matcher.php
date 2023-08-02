@@ -73,7 +73,7 @@ class Matcher
     }
 
     /**
-     * @param array{mixed, callable}|array<string, mixed> $args
+     * @param array<string, mixed>|array{mixed, callable} $args
      */
     public static function match(...$args): ValueMatcher
     {

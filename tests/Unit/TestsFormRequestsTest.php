@@ -8,7 +8,7 @@ use Soyhuce\Testing\Tests\Fixtures\FormRequests\CreateUserRequest;
 use Soyhuce\Testing\Tests\TestCase;
 
 /**
- * @covers \Soyhuce\Testing\Concerns\TestsFormRequests
+ * @coversDefaultClass  \Soyhuce\Testing\Concerns\TestsFormRequests
  */
 class TestsFormRequestsTest extends TestCase
 {
