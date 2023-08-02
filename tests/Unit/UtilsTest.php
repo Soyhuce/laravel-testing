@@ -7,12 +7,13 @@ use Soyhuce\Testing\Tests\TestCase;
 use function Soyhuce\Testing\capture;
 
 /**
- * @covers \Soyhuce\Testing\Utils
+ * @coversNothing
  */
 class UtilsTest extends TestCase
 {
     /**
      * @test
+     * @covers \Soyhuce\Testing\capture
      */
     public function captureCapturesReturnValue(): void
     {

@@ -17,7 +17,7 @@ class TestsJsonResourcesTest extends TestCase
 
     /**
      * @test
-     * @covers ::fromResource
+     * @covers ::createResponse
      */
     public function theTestResponseIsCreatedFromTheResource(): void
     {
