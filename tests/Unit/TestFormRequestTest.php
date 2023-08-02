@@ -4,11 +4,13 @@ namespace Soyhuce\Testing\Tests\Unit;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Hash;
 use PHPUnit\Framework\AssertionFailedError;
 use PHPUnit\Framework\ExpectationFailedException;
 use Soyhuce\Testing\Concerns\TestsFormRequests;
 use Soyhuce\Testing\Tests\Fixtures\FormRequests\CreateUserRequest;
+use Soyhuce\Testing\Tests\Fixtures\FormRequests\FileRequest;
 use Soyhuce\Testing\Tests\Fixtures\FormRequests\UpdatePasswordRequest;
 use Soyhuce\Testing\Tests\TestCase;
 
@@ -164,6 +166,31 @@ class TestFormRequestTest extends TestCase
                 'email' => 'john doe',
             ])
             ->assertPasses();
+    }
+
+    /**
+     * @test
+     * @covers ::withFiles
+     */
+    public function theFormRequestPassesValidationWithFile(): void
+    {
+        $this->createRequest(FileRequest::class)
+            ->withFiles(['file' => UploadedFile::fake()->image('foo.jpg')])
+            ->validate()
+            ->assertPasses();
+    }
+
+    /**
+     * @test
+     * @covers ::validate
+     */
+    public function theFormRequestFailsValidationWithFile(): void
+    {
+        $this->createRequest(FileRequest::class)
+            ->validate()
+            ->assertFails([
+                'file' => 'required',
+            ]);
     }
 
     /**
