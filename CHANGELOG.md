@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-testing` will be documented in this file.
 
+## 2.1.1 - 2023-08-23
+
+### What's Changed
+
+- Allow invade 2.0 by @bastien-phi in https://github.com/Soyhuce/laravel-testing/pull/25
+
+**Full Changelog**: https://github.com/Soyhuce/laravel-testing/compare/2.1.0...2.1.1
+
 ## 2.1.0 - 2023-08-23
 
 ### What's Changed
