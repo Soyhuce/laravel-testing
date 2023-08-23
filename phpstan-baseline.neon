@@ -1,6 +1,16 @@
 parameters:
 	ignoreErrors:
 		-
+			message: "#^Call to protected method getValidatorInstance\\(\\) of class Illuminate\\\\Foundation\\\\Http\\\\FormRequest\\.$#"
+			count: 1
+			path: src/FormRequest/TestFormRequest.php
+
+		-
+			message: "#^Call to protected method passesAuthorization\\(\\) of class Illuminate\\\\Foundation\\\\Http\\\\FormRequest\\.$#"
+			count: 2
+			path: src/FormRequest/TestFormRequest.php
+
+		-
 			message: "#^Cannot call method setParameter\\(\\) on Illuminate\\\\Routing\\\\Route\\|null\\.$#"
 			count: 1
 			path: src/FormRequest/TestFormRequest.php
