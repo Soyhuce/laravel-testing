@@ -2,6 +2,17 @@
 
 All notable changes to `laravel-testing` will be documented in this file.
 
+## 2.1.0 - 2023-08-23
+
+### What's Changed
+
+- Bump dependabot/fetch-metadata from 1.3.6 to 1.4.0 by @dependabot in https://github.com/Soyhuce/laravel-testing/pull/21
+- Bump dependabot/fetch-metadata from 1.4.0 to 1.5.1 by @dependabot in https://github.com/Soyhuce/laravel-testing/pull/22
+- Bump dependabot/fetch-metadata from 1.5.1 to 1.6.0 by @dependabot in https://github.com/Soyhuce/laravel-testing/pull/23
+- Add files in test form requests by @bastien-phi in https://github.com/Soyhuce/laravel-testing/pull/24
+
+**Full Changelog**: https://github.com/Soyhuce/laravel-testing/compare/2.0.1...2.1.0
+
 ## 2.0.1 - 2023-03-23
 
 Fix PHPUnit 10 support
