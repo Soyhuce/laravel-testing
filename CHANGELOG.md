@@ -2,6 +2,15 @@
 
 All notable changes to `laravel-testing` will be documented in this file.
 
+## 2.2.0 - 2023-09-20
+
+### What's Changed
+
+- Remove support for spatie/data-transfer-object, improve support for spatie/laravel-data by @bastien-phi in https://github.com/Soyhuce/laravel-testing/pull/27
+- Bump actions/checkout from 3 to 4 by @dependabot in https://github.com/Soyhuce/laravel-testing/pull/26
+
+**Full Changelog**: https://github.com/Soyhuce/laravel-testing/compare/2.1.1...2.2.0
+
 ## 2.1.1 - 2023-08-23
 
 ### What's Changed
