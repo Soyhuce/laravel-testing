@@ -33,7 +33,7 @@
         "phpstan/extension-installer": "^1.1",
         "phpstan/phpstan-deprecation-rules": "^1.0",
         "phpstan/phpstan-phpunit": "^1.0",
-        "spatie/data-transfer-object": "^3.9"
+        "spatie/laravel-data": "^3.9"
     },
     "autoload": {
         "psr-4": {

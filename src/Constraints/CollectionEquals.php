@@ -57,6 +57,7 @@ class CollectionEquals extends Constraint
         foreach ($this->value as $key => $value) {
             $constraint = match (true) {
                 $value instanceof Model => new IsModel($value),
+                class_exists(\Spatie\LaravelData\Data::class) && $value instanceof \Spatie\LaravelData\Data => new DataEquals($value),
                 is_object($value) => new IsEqual($value),
                 default => new IsIdentical($value),
             };

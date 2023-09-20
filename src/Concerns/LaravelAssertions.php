@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use PHPUnit\Framework\Assert;
 use Soyhuce\Testing\Constraints\CollectionEquals;
+use Soyhuce\Testing\Constraints\DataEquals;
 use Soyhuce\Testing\Constraints\IsModel;
 use function is_array;
 
@@ -29,6 +30,13 @@ trait LaravelAssertions
         }
 
         $constraint = new CollectionEquals($expected);
+
+        Assert::assertThat($actual, $constraint, $message);
+    }
+
+    public static function assertDataEquals(\Spatie\LaravelData\Data $expected, mixed $actual, string $message = ''): void
+    {
+        $constraint = new DataEquals($expected);
 
         Assert::assertThat($actual, $constraint, $message);
     }
