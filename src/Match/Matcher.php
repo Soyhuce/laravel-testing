@@ -22,9 +22,9 @@ class Matcher
                     $value = self::isModel($value);
                 } elseif ($value instanceof Collection) {
                     $value = self::collectionEquals($value);
-                } elseif (class_exists(\Spatie\DataTransferObject\DataTransferObject::class) && $value instanceof \Spatie\DataTransferObject\DataTransferObject) {
-                    $value = self::of($value::class)->properties(...$value->all())->toClosure();
-                } // TODO : drop support for Spatie DTO
+                } elseif (class_exists(\Spatie\LaravelData\Data::class) && $value instanceof \Spatie\LaravelData\Data) {
+                    $value = self::dataEquals($value);
+                }
 
                 if (is_callable($value)) {
                     $result = $value($args[$key]);
@@ -59,6 +59,15 @@ class Matcher
     {
         return function (mixed $actual) use ($expected) {
             LaravelAssert::assertCollectionEquals($expected, $actual);
+
+            return true;
+        };
+    }
+
+    public static function dataEquals(\Spatie\LaravelData\Data $expected): Closure
+    {
+        return function (mixed $actual) use ($expected) {
+            LaravelAssert::assertDataEquals($expected, $actual);
 
             return true;
         };

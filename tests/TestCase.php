@@ -5,6 +5,7 @@ namespace Soyhuce\Testing\Tests;
 use Illuminate\Foundation\Testing\Concerns\InteractsWithDeprecationHandling;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Soyhuce\Testing\TestingServiceProvider;
+use Spatie\LaravelData\LaravelDataServiceProvider;
 
 /**
  * @coversNothing
@@ -24,6 +25,7 @@ class TestCase extends Orchestra
     {
         return [
             TestingServiceProvider::class,
+            LaravelDataServiceProvider::class,
         ];
     }
 }

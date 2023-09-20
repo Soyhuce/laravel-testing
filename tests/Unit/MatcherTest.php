@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Collection;
 use PHPUnit\Framework\ExpectationFailedException;
 use Soyhuce\Testing\Match\Matcher;
+use Soyhuce\Testing\Tests\Fixtures\SimpleData;
 use Soyhuce\Testing\Tests\TestCase;
 
 /**
@@ -127,6 +128,49 @@ class MatcherTest extends TestCase
 
         $collection = new Collection([1, 2]);
         Matcher::collectionEquals([1, 2, 3])($collection);
+    }
+
+    /**
+     * @test
+     * @covers ::make
+     */
+    public function matcherMatchesData(): void
+    {
+        $expected = new SimpleData('foo', 1);
+        $value = SimpleData::from(['name' => 'foo', 'age' => 1]);
+        $value->getPartialTrees();
+
+        $result = Matcher::make($expected)($value);
+
+        $this->assertTrue($result);
+    }
+
+    /**
+     * @test
+     * @covers ::make
+     */
+    public function matcherFailsMatchingData(): void
+    {
+        $expected = new SimpleData('foo', 1);
+        $value = SimpleData::from(['name' => 'bar', 'age' => 12]);
+
+        $this->expectException(ExpectationFailedException::class);
+        Matcher::make($expected)($value);
+    }
+
+    /**
+     * @test
+     * @covers ::make
+     */
+    public function matcherMatchesCollectionOfData(): void
+    {
+        $expected = new SimpleData('foo', 1);
+        $value = SimpleData::from(['name' => 'foo', 'age' => 1]);
+        $value->getPartialTrees();
+
+        $result = Matcher::make(collect([$expected]))(collect([$value]));
+
+        $this->assertTrue($result);
     }
 
     /**
