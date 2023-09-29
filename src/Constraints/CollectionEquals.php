@@ -8,7 +8,6 @@ use PHPUnit\Framework\Constraint\Constraint;
 use PHPUnit\Framework\Constraint\IsEqual;
 use PHPUnit\Framework\Constraint\IsIdentical;
 use SebastianBergmann\Comparator\ComparisonFailure;
-use Spatie\LaravelData\DataCollection;
 use function is_object;
 
 class CollectionEquals extends Constraint
