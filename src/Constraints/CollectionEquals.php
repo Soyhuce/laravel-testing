@@ -8,6 +8,7 @@ use PHPUnit\Framework\Constraint\Constraint;
 use PHPUnit\Framework\Constraint\IsEqual;
 use PHPUnit\Framework\Constraint\IsIdentical;
 use SebastianBergmann\Comparator\ComparisonFailure;
+use Spatie\LaravelData\DataCollection;
 use function is_object;
 
 class CollectionEquals extends Constraint
@@ -58,6 +59,7 @@ class CollectionEquals extends Constraint
             $constraint = match (true) {
                 $value instanceof Model => new IsModel($value),
                 class_exists(\Spatie\LaravelData\Data::class) && $value instanceof \Spatie\LaravelData\Data => new DataEquals($value),
+                class_exists(\Spatie\LaravelData\DataCollection::class) && $value instanceof \Spatie\LaravelData\DataCollection => new DataCollectionEquals($value),
                 is_object($value) => new IsEqual($value),
                 default => new IsIdentical($value),
             };
