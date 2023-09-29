@@ -177,6 +177,47 @@ class MatcherTest extends TestCase
      * @test
      * @covers ::make
      */
+    public function matcherMatchesDataCollections(): void
+    {
+        $expected = SimpleData::collection([
+            ['name' => 'foo', 'age' => 1],
+            ['name' => 'bar', 'age' => 14],
+        ]);
+        $value = SimpleData::collection([
+            new SimpleData('foo', 1),
+            new SimpleData('bar', 14),
+        ]);
+        $value->getPartialTrees();
+
+        $result = Matcher::make($expected)($value);
+
+        $this->assertTrue($result);
+    }
+
+    /**
+     * @test
+     * @covers ::make
+     */
+    public function matcherFailsToMatchDataCollections(): void
+    {
+        $expected = SimpleData::collection([
+            ['name' => 'foo', 'age' => 1],
+            ['name' => 'bar', 'age' => 14],
+        ]);
+        $value = SimpleData::collection([
+            new SimpleData('bar', 14),
+            new SimpleData('foo', 2),
+        ]);
+        $value->getPartialTrees();
+
+        $this->expectException(ExpectationFailedException::class);
+        Matcher::make($expected)($value);
+    }
+
+    /**
+     * @test
+     * @covers ::make
+     */
     public function matcherMatchesObject(): void
     {
         $expected = new DateTimeImmutable('2021-01-01 12:00:00');

@@ -24,6 +24,8 @@ class Matcher
                     $value = self::collectionEquals($value);
                 } elseif (class_exists(\Spatie\LaravelData\Data::class) && $value instanceof \Spatie\LaravelData\Data) {
                     $value = self::dataEquals($value);
+                } elseif (class_exists(\Spatie\LaravelData\DataCollection::class) && $value instanceof \Spatie\LaravelData\DataCollection) {
+                    $value = self::dataCollectionEquals($value);
                 }
 
                 if (is_callable($value)) {
@@ -68,6 +70,18 @@ class Matcher
     {
         return function (mixed $actual) use ($expected) {
             LaravelAssert::assertDataEquals($expected, $actual);
+
+            return true;
+        };
+    }
+
+    /**
+     * @param array<array-key, mixed>|\Spatie\LaravelData\DataCollection<array-key, mixed> $expected
+     */
+    public static function dataCollectionEquals(\Spatie\LaravelData\DataCollection|array $expected): Closure
+    {
+        return function (mixed $actual) use ($expected) {
+            LaravelAssert::assertDataCollectionEquals($expected, $actual);
 
             return true;
         };
