@@ -6,8 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use PHPUnit\Framework\Assert;
 use Soyhuce\Testing\Constraints\CollectionEquals;
+use Soyhuce\Testing\Constraints\DataCollectionEquals;
 use Soyhuce\Testing\Constraints\DataEquals;
 use Soyhuce\Testing\Constraints\IsModel;
+use Spatie\LaravelData\DataCollection;
+use function assert;
 use function is_array;
 
 trait LaravelAssertions
@@ -37,6 +40,22 @@ trait LaravelAssertions
     public static function assertDataEquals(\Spatie\LaravelData\Data $expected, mixed $actual, string $message = ''): void
     {
         $constraint = new DataEquals($expected);
+
+        Assert::assertThat($actual, $constraint, $message);
+    }
+
+    /**
+     * @static
+     * @param array<array-key, mixed>|\Spatie\LaravelData\DataCollection<array-key, mixed> $expected
+     */
+    public static function assertDataCollectionEquals(DataCollection|array $expected, mixed $actual, string $message = ''): void
+    {
+        if (is_array($expected)) {
+            assert($actual instanceof DataCollection, 'Failed asserting that value is a DataCollection');
+            $expected = $actual->dataClass::collection($expected);
+        }
+
+        $constraint = new DataCollectionEquals($expected);
 
         Assert::assertThat($actual, $constraint, $message);
     }
