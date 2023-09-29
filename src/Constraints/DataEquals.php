@@ -6,6 +6,7 @@ use Illuminate\Support\Collection;
 use PHPUnit\Framework\Constraint\Constraint;
 use SebastianBergmann\Comparator\ComparisonFailure;
 use Spatie\LaravelData\Data;
+use Spatie\LaravelData\Support\Wrapping\WrapExecutionType;
 
 class DataEquals extends Constraint
 {
@@ -30,8 +31,8 @@ class DataEquals extends Constraint
             ? new ComparisonFailure(
                 $this->value,
                 $other,
-                $this->exporter()->export($this->value),
-                $this->exporter()->export($other)
+                $this->exporter()->export(self::export($this->value)),
+                $this->exporter()->export(self::export($other))
             )
             : null;
 
@@ -40,21 +41,37 @@ class DataEquals extends Constraint
 
     protected function matches(mixed $other): bool
     {
-        if (!$other instanceof Data) {
+        if (!is_a($other, $this->value::class)) {
             return false;
         }
 
-        return (new CollectionEquals(Collection::make($this->value->all())))
-            ->matches(Collection::make($other->all()));
+        return (new CollectionEquals(Collection::make(self::export($this->value))))
+            ->matches(Collection::make(self::export($other)));
     }
 
     protected function failureDescription(mixed $other): string
     {
+        if ($other instanceof Data) {
+            return 'given ' . $other::class . ' ' . $this->toString();
+        }
+
         return $this->exporter()->export($other) . ' ' . $this->toString();
     }
 
     public function toString(): string
     {
-        return 'is same data that ' . $this->exporter()->export($this->value);
+        return 'is same data that expected ' . $this->value::class;
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    public static function export(Data $model): array
+    {
+        return $model->transform(
+            transformValues: false,
+            wrapExecutionType: WrapExecutionType::Disabled,
+            mapPropertyNames: false
+        );
     }
 }
