@@ -42,9 +42,8 @@ class JsonAssertionsTest extends TestCase
      * @test
      * @covers       \Soyhuce\Testing\TestResponse\JsonAssertions::assertJsonPathMissing
      * @dataProvider goodAssertJsonPathMissingData
-     * @param mixed $item
      */
-    public function assertJsonPathMissingIsSuccessfulWhenItemIsNotInResponse(string $key, $item, array $actual): void
+    public function assertJsonPathMissingIsSuccessfulWhenItemIsNotInResponse(string $key, mixed $item, array $actual): void
     {
         $response = new TestResponse(new Response($actual));
 
@@ -71,9 +70,8 @@ class JsonAssertionsTest extends TestCase
      * @test
      * @covers       \Soyhuce\Testing\TestResponse\JsonAssertions::assertJsonPathMissing
      * @dataProvider badAssertJsonPathMissingData
-     * @param mixed $item
      */
-    public function assertJsonPathMissingIsNotSuccessfulWhenDataContainsTheItem(string $key, $item, array $actual): void
+    public function assertJsonPathMissingIsNotSuccessfulWhenDataContainsTheItem(string $key, mixed $item, array $actual): void
     {
         $response = new TestResponse(new Response($actual));
 

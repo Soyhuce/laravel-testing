@@ -79,9 +79,8 @@ class DataAssertionsTest extends TestCase
      * @test
      * @covers       \Soyhuce\Testing\TestResponse\DataAssertions::assertDataPath
      * @dataProvider goodAssertDataPathData
-     * @param mixed $expected
      */
-    public function assertDataPathIsSuccessfulWhenDataMatches(string $path, $expected, array $actual): void
+    public function assertDataPathIsSuccessfulWhenDataMatches(string $path, mixed $expected, array $actual): void
     {
         $response = new TestResponse(new Response(['data' => $actual]));
 
@@ -115,9 +114,8 @@ class DataAssertionsTest extends TestCase
      * @test
      * @covers       \Soyhuce\Testing\TestResponse\DataAssertions::assertDataPath
      * @dataProvider badAssertDataPathData
-     * @param mixed $expected
      */
-    public function assertDataPathIsNotSuccessfulWhenDataDoesNotMatch(string $path, $expected, array $actual): void
+    public function assertDataPathIsNotSuccessfulWhenDataDoesNotMatch(string $path, mixed $expected, array $actual): void
     {
         $response = new TestResponse(new Response(['data' => $actual]));
 
@@ -155,9 +153,8 @@ class DataAssertionsTest extends TestCase
      * @test
      * @covers       \Soyhuce\Testing\TestResponse\DataAssertions::assertDataMissing
      * @dataProvider goodAssertDataMissingData
-     * @param mixed $item
      */
-    public function assertDataMissingIsSuccessfulWhenItemIsNotInResponse($item, array $actual): void
+    public function assertDataMissingIsSuccessfulWhenItemIsNotInResponse(mixed $item, array $actual): void
     {
         $response = new TestResponse(new Response(['data' => $actual]));
 
@@ -180,9 +177,8 @@ class DataAssertionsTest extends TestCase
      * @test
      * @covers       \Soyhuce\Testing\TestResponse\DataAssertions::assertDataPath
      * @dataProvider badAssertDataMissingData
-     * @param mixed $item
      */
-    public function assertDataMissingIsNotSuccessfulWhenDataContainsTheItem($item, array $actual): void
+    public function assertDataMissingIsNotSuccessfulWhenDataContainsTheItem(mixed $item, array $actual): void
     {
         $response = new TestResponse(new Response(['data' => $actual]));
 
@@ -212,9 +208,8 @@ class DataAssertionsTest extends TestCase
      * @test
      * @covers       \Soyhuce\Testing\TestResponse\DataAssertions::assertDataPathMissing
      * @dataProvider goodAssertDataPathMissingData
-     * @param mixed $item
      */
-    public function assertDataPathMissingIsSuccessfulWhenItemIsNotInResponse(string $key, $item, array $actual): void
+    public function assertDataPathMissingIsSuccessfulWhenItemIsNotInResponse(string $key, mixed $item, array $actual): void
     {
         $response = new TestResponse(new Response(['data' => $actual]));
 
@@ -237,9 +232,8 @@ class DataAssertionsTest extends TestCase
      * @test
      * @covers       \Soyhuce\Testing\TestResponse\DataAssertions::assertDataPathMissing
      * @dataProvider badAssertDataPathMissingData
-     * @param mixed $item
      */
-    public function assertDataPathMissingIsNotSuccessfulWhenDataContainsTheItem(string $key, $item, array $actual): void
+    public function assertDataPathMissingIsNotSuccessfulWhenDataContainsTheItem(string $key, mixed $item, array $actual): void
     {
         $response = new TestResponse(new Response(['data' => $actual]));
 
