@@ -17,7 +17,7 @@ class CollectionEqualsTest extends TestCase
 {
     use LaravelAssertions;
 
-    public function sameCollection(): array
+    public static function sameCollection(): array
     {
         Model::unguard();
 
@@ -43,7 +43,7 @@ class CollectionEqualsTest extends TestCase
         $this->assertCollectionEquals($first, $second);
     }
 
-    public function differentCollections(): array
+    public static function differentCollections(): array
     {
         Model::unguard();
 

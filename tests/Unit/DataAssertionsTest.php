@@ -31,7 +31,7 @@ class DataAssertionsTest extends TestCase
         ]);
     }
 
-    public function badAssertDataData()
+    public static function badAssertDataData()
     {
         return [
             [
@@ -63,7 +63,7 @@ class DataAssertionsTest extends TestCase
         $response->assertData($expected);
     }
 
-    public function goodAssertDataPathData()
+    public static function goodAssertDataPathData()
     {
         return [
             [
@@ -88,7 +88,7 @@ class DataAssertionsTest extends TestCase
         $response->assertDataPath($path, $expected);
     }
 
-    public function badAssertDataPathData()
+    public static function badAssertDataPathData()
     {
         return [
             [
@@ -136,7 +136,7 @@ class DataAssertionsTest extends TestCase
         $response->assertDataPaths(['foo' => 'bar', 'titi.toto' => 'tata']);
     }
 
-    public function goodAssertDataMissingData()
+    public static function goodAssertDataMissingData()
     {
         return [
             [
@@ -164,7 +164,7 @@ class DataAssertionsTest extends TestCase
         $response->assertDataMissing($item);
     }
 
-    public function badAssertDataMissingData()
+    public static function badAssertDataMissingData()
     {
         return [
             [
@@ -190,7 +190,7 @@ class DataAssertionsTest extends TestCase
         $response->assertDataMissing($item);
     }
 
-    public function goodAssertDataPathMissingData()
+    public static function goodAssertDataPathMissingData()
     {
         return [
             [
@@ -221,7 +221,7 @@ class DataAssertionsTest extends TestCase
         $response->assertDataPathMissing($key, $item);
     }
 
-    public function badAssertDataPathMissingData()
+    public static function badAssertDataPathMissingData()
     {
         return [
             [
