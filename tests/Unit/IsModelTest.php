@@ -15,18 +15,18 @@ class IsModelTest extends TestCase
 {
     use LaravelAssertions;
 
-    public function newModel(array $attributes = []): Model
+    public static function newModel(array $attributes = []): Model
     {
         return new class($attributes) extends Model {
         };
     }
 
-    public function sameModel(): array
+    public static function sameModel(): array
     {
         Model::unguard();
 
         return [
-            [$this->newModel(['id' => 1]), $this->newModel(['id' => 1])],
+            [self::newModel(['id' => 1]), self::newModel(['id' => 1])],
             [new User(['id' => 1]), new User(['id' => 1])],
             [new User(['id' => 1, 'name' => 'John']), new User(['id' => 1, 'name' => 'Peter'])],
         ];
@@ -41,13 +41,13 @@ class IsModelTest extends TestCase
         $this->assertIsModel($first, $second);
     }
 
-    public function differentModels(): array
+    public static function differentModels(): array
     {
         Model::unguard();
 
         return [
-            [$this->newModel(['id' => 1]), $this->newModel(['id' => 2])],
-            [$this->newModel(['id' => 1]), new User(['id' => 1])],
+            [self::newModel(['id' => 1]), self::newModel(['id' => 2])],
+            [self::newModel(['id' => 1]), new User(['id' => 1])],
             [new User(['id' => 2]), new User(['id' => 1])],
         ];
     }

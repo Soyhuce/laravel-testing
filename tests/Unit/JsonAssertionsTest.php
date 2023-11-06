@@ -12,7 +12,7 @@ use Soyhuce\Testing\Tests\TestCase;
  */
 class JsonAssertionsTest extends TestCase
 {
-    public function goodAssertJsonPathMissingData()
+    public static function goodAssertJsonPathMissingData()
     {
         return [
             [
@@ -51,7 +51,7 @@ class JsonAssertionsTest extends TestCase
         $response->assertJsonPathMissing($key, $item);
     }
 
-    public function badAssertJsonPathMissingData()
+    public static function badAssertJsonPathMissingData()
     {
         return [
             [
@@ -92,7 +92,7 @@ class JsonAssertionsTest extends TestCase
         $response->assertJsonMessage('Hello world');
     }
 
-    public function badAssertJsonMessageData()
+    public static function badAssertJsonMessageData()
     {
         return [
             [['message' => 'Hello foo']],
