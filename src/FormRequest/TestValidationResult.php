@@ -19,8 +19,8 @@ class TestValidationResult
     private const JSON_OPTIONS = JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRESERVE_ZERO_FRACTION;
 
     public function __construct(
-        private Validator $validator,
-        private ?ValidationException $failed = null,
+        private readonly Validator $validator,
+        private readonly ?ValidationException $failed = null,
     ) {
     }
 
