@@ -7,6 +7,7 @@ use Illuminate\Support\Collection;
 use PHPUnit\Framework\Constraint\Constraint;
 use PHPUnit\Framework\Constraint\IsEqual;
 use PHPUnit\Framework\Constraint\IsIdentical;
+use PHPUnit\Util\Exporter;
 use SebastianBergmann\Comparator\ComparisonFailure;
 use function is_object;
 
@@ -36,8 +37,8 @@ class CollectionEquals extends Constraint
             ? new ComparisonFailure(
                 $this->value,
                 $other,
-                $this->exporter()->export($this->formatCollection($this->value)),
-                $this->exporter()->export($this->formatCollection($other))
+                Exporter::export($this->formatCollection($this->value)),
+                Exporter::export($this->formatCollection($other))
             )
             : null;
 
@@ -77,12 +78,12 @@ class CollectionEquals extends Constraint
             return 'the two collections are equal';
         }
 
-        return $this->exporter()->export($other) . ' is a collection';
+        return Exporter::export($other) . ' is a collection';
     }
 
     public function toString(): string
     {
-        return 'is same collection that ' . $this->exporter()->export($this->value->toArray());
+        return 'is same collection that ' . Exporter::export($this->value->toArray());
     }
 
     /**
