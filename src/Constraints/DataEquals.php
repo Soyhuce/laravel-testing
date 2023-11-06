@@ -4,6 +4,7 @@ namespace Soyhuce\Testing\Constraints;
 
 use Illuminate\Support\Collection;
 use PHPUnit\Framework\Constraint\Constraint;
+use PHPUnit\Util\Exporter;
 use SebastianBergmann\Comparator\ComparisonFailure;
 use Spatie\LaravelData\Data;
 use Spatie\LaravelData\Support\Wrapping\WrapExecutionType;
@@ -31,8 +32,8 @@ class DataEquals extends Constraint
             ? new ComparisonFailure(
                 $this->value,
                 $other,
-                $this->exporter()->export(self::export($this->value)),
-                $this->exporter()->export(self::export($other))
+                Exporter::export(self::export($this->value)),
+                Exporter::export(self::export($other))
             )
             : null;
 
@@ -55,7 +56,7 @@ class DataEquals extends Constraint
             return 'given ' . $other::class . ' ' . $this->toString();
         }
 
-        return $this->exporter()->export($other) . ' ' . $this->toString();
+        return Exporter::export($other) . ' ' . $this->toString();
     }
 
     public function toString(): string
