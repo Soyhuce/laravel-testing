@@ -21,7 +21,7 @@
         "illuminate/support": "^10.0",
         "illuminate/testing": "^10.0",
         "phpunit/phpunit": "^10.0",
-        "spatie/invade": "^2.0"
+        "spatie/invade": "^1.0 || ^2.0"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.6",
