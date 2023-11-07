@@ -14,9 +14,9 @@ class PendingActionMock
 {
     private Closure $returnsUsing;
 
-    private readonly MockInterface $mock;
+    private MockInterface $mock;
 
-    private readonly ExpectationInterface $mockedMethod;
+    private ExpectationInterface $mockedMethod;
 
     /**
      * @param class-string $action

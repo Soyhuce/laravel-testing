@@ -24,7 +24,7 @@ class TestFormRequest
      * @param TRequest $request
      */
     public function __construct(
-        private readonly FormRequest $request,
+        private FormRequest $request,
     ) {
     }
 
