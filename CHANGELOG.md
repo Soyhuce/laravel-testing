@@ -2,6 +2,19 @@
 
 All notable changes to `laravel-testing` will be documented in this file.
 
+## 2.4.0 - 2023-11-24
+
+### What's Changed
+
+- Bump stefanzweifel/git-auto-commit-action from 4 to 5 by @dependabot in https://github.com/Soyhuce/laravel-testing/pull/29
+- Run tests on PHP 8.3 by @EdenMl in https://github.com/Soyhuce/laravel-testing/pull/30
+
+### New Contributors
+
+- @EdenMl made their first contribution in https://github.com/Soyhuce/laravel-testing/pull/30
+
+**Full Changelog**: https://github.com/Soyhuce/laravel-testing/compare/2.3.0...2.4.0
+
 ## 2.2.0 - 2023-09-20
 
 ### What's Changed
