@@ -33,8 +33,8 @@ class DataCollectionEquals extends Constraint
             ? new ComparisonFailure(
                 $this->value,
                 $other,
-                Exporter::export($this->value),
-                Exporter::export($other)
+                Exporter::export($this->value, true),
+                Exporter::export($other, true)
             )
             : null;
 
