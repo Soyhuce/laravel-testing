@@ -37,8 +37,8 @@ class CollectionEquals extends Constraint
             ? new ComparisonFailure(
                 $this->value,
                 $other,
-                Exporter::export($this->formatCollection($this->value)),
-                Exporter::export($this->formatCollection($other))
+                Exporter::export($this->formatCollection($this->value), true),
+                Exporter::export($this->formatCollection($other), true)
             )
             : null;
 
@@ -78,12 +78,12 @@ class CollectionEquals extends Constraint
             return 'the two collections are equal';
         }
 
-        return Exporter::export($other) . ' is a collection';
+        return Exporter::export($other, true) . ' is a collection';
     }
 
     public function toString(): string
     {
-        return 'is same collection that ' . Exporter::export($this->value->toArray());
+        return 'is same collection that ' . Exporter::export($this->value->toArray(), true);
     }
 
     /**

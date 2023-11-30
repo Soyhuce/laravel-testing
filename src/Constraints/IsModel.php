@@ -30,8 +30,8 @@ class IsModel extends Constraint
             ? new ComparisonFailure(
                 $this->value,
                 $other,
-                Exporter::export(self::export($this->value)),
-                Exporter::export(self::export($other))
+                Exporter::export(self::export($this->value), true),
+                Exporter::export(self::export($other), true)
             )
             : null;
 
@@ -44,7 +44,7 @@ class IsModel extends Constraint
             return $this->shortDescription($other) . ' ' . $this->toString();
         }
 
-        return Exporter::export($other) . ' ' . $this->toString();
+        return Exporter::export($other, true) . ' ' . $this->toString();
     }
 
     public function toString(): string

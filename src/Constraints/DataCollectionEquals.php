@@ -74,11 +74,11 @@ class DataCollectionEquals extends Constraint
             return 'the two data collections are equal';
         }
 
-        return Exporter::export($other) . ' is a collection';
+        return Exporter::export($other, true) . ' is a collection';
     }
 
     public function toString(): string
     {
-        return 'is same collection that ' . Exporter::export($this->value->toArray());
+        return 'is same collection that ' . Exporter::export($this->value->toArray(), true);
     }
 }
