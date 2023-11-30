@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-testing` will be documented in this file.
 
+## 2.4.1 - 2023-11-30
+
+### What's Changed
+
+* Enable object export for Export & add tests for DataCollection by @EdenMl in https://github.com/Soyhuce/laravel-testing/pull/31
+
+**Full Changelog**: https://github.com/Soyhuce/laravel-testing/compare/2.4.0...2.4.1
+
 ## 2.4.0 - 2023-11-24
 
 ### What's Changed
