@@ -32,8 +32,8 @@ class DataEquals extends Constraint
             ? new ComparisonFailure(
                 $this->value,
                 $other,
-                Exporter::export(self::export($this->value)),
-                Exporter::export(self::export($other))
+                Exporter::export(self::export($this->value), true),
+                Exporter::export(self::export($other), true)
             )
             : null;
 
@@ -56,7 +56,7 @@ class DataEquals extends Constraint
             return 'given ' . $other::class . ' ' . $this->toString();
         }
 
-        return Exporter::export($other) . ' ' . $this->toString();
+        return Exporter::export($other, true) . ' ' . $this->toString();
     }
 
     public function toString(): string
