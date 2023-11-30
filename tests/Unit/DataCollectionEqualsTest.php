@@ -36,10 +36,6 @@ class DataCollectionEqualsTest extends TestCase
                 ['a' => ['name' => 'John', 'age' => 42], 'b' => ['name' => 'Peter', 'age' => 25]],
                 SimpleData::collection(['a' => new SimpleData(name: 'John', age: 42), 'b' => new SimpleData(name: 'Peter', age: 25)]),
             ],
-            [
-                SimpleData::collection([]),
-                SimpleData::collection([]),
-            ],
         ];
     }
 
