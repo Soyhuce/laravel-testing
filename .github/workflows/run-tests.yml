@@ -23,6 +23,9 @@ jobs:
             testbench: 8.*
           - laravel: 11.*
             testbench: 9.*
+        exclude:
+          - laravel: 10.*
+            phpunit: ^11.0
 
     name: P${{ matrix.php }} - L${{ matrix.laravel }} - PU${{ matrix.phpunit }}- DATA${{ matrix.laravel-data }}- ${{ matrix.stability }} - ${{ matrix.os }}
 
