@@ -2,6 +2,15 @@
 
 All notable changes to `laravel-testing` will be documented in this file.
 
+## 2.5.0 - 2024-03-08
+
+### What's Changed
+
+* Bump ramsey/composer-install from 2 to 3 by @dependabot in https://github.com/Soyhuce/laravel-testing/pull/32
+* Add support on Laravel 11, laravel data 4 by @bastien-phi in https://github.com/Soyhuce/laravel-testing/pull/33
+
+**Full Changelog**: https://github.com/Soyhuce/laravel-testing/compare/2.4.1...2.5.0
+
 ## 2.4.1 - 2023-11-30
 
 ### What's Changed
