@@ -3,8 +3,8 @@
 namespace Soyhuce\Testing\Constraints;
 
 use PHPUnit\Framework\Constraint\Constraint;
-use PHPUnit\Util\Exporter;
 use SebastianBergmann\Comparator\ComparisonFailure;
+use SebastianBergmann\Exporter\Exporter;
 use Spatie\LaravelData\DataCollection;
 
 class DataCollectionEquals extends Constraint
@@ -33,8 +33,8 @@ class DataCollectionEquals extends Constraint
             ? new ComparisonFailure(
                 $this->value,
                 $other,
-                Exporter::export($this->value, true),
-                Exporter::export($other, true)
+                (new Exporter())->export($this->value),
+                (new Exporter())->export($other)
             )
             : null;
 
@@ -74,11 +74,11 @@ class DataCollectionEquals extends Constraint
             return 'the two data collections are equal';
         }
 
-        return Exporter::export($other, true) . ' is a collection';
+        return (new Exporter())->export($other) . ' is a collection';
     }
 
     public function toString(): string
     {
-        return 'is same collection that ' . Exporter::export($this->value->toArray(), true);
+        return 'is same collection that ' . (new Exporter())->export($this->value->toArray());
     }
 }

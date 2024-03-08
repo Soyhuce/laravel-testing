@@ -4,8 +4,8 @@ namespace Soyhuce\Testing\Constraints;
 
 use Illuminate\Database\Eloquent\Model;
 use PHPUnit\Framework\Constraint\Constraint;
-use PHPUnit\Util\Exporter;
 use SebastianBergmann\Comparator\ComparisonFailure;
+use SebastianBergmann\Exporter\Exporter;
 
 class IsModel extends Constraint
 {
@@ -30,8 +30,8 @@ class IsModel extends Constraint
             ? new ComparisonFailure(
                 $this->value,
                 $other,
-                Exporter::export(self::export($this->value), true),
-                Exporter::export(self::export($other), true)
+                (new Exporter())->export(self::export($this->value)),
+                (new Exporter())->export(self::export($other))
             )
             : null;
 
@@ -44,7 +44,7 @@ class IsModel extends Constraint
             return $this->shortDescription($other) . ' ' . $this->toString();
         }
 
-        return Exporter::export($other, true) . ' ' . $this->toString();
+        return (new Exporter())->export($other) . ' ' . $this->toString();
     }
 
     public function toString(): string
