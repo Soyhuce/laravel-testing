@@ -4,9 +4,10 @@ namespace Soyhuce\Testing\Constraints;
 
 use Illuminate\Support\Collection;
 use PHPUnit\Framework\Constraint\Constraint;
-use PHPUnit\Util\Exporter;
 use SebastianBergmann\Comparator\ComparisonFailure;
+use SebastianBergmann\Exporter\Exporter;
 use Spatie\LaravelData\Data;
+use Spatie\LaravelData\Support\Transformation\TransformationContextFactory;
 use Spatie\LaravelData\Support\Wrapping\WrapExecutionType;
 
 class DataEquals extends Constraint
@@ -32,8 +33,8 @@ class DataEquals extends Constraint
             ? new ComparisonFailure(
                 $this->value,
                 $other,
-                Exporter::export(self::export($this->value), true),
-                Exporter::export(self::export($other), true)
+                (new Exporter())->export(self::export($this->value)),
+                (new Exporter())->export(self::export($other))
             )
             : null;
 
@@ -56,7 +57,7 @@ class DataEquals extends Constraint
             return 'given ' . $other::class . ' ' . $this->toString();
         }
 
-        return Exporter::export($other, true) . ' ' . $this->toString();
+        return (new Exporter())->export($other) . ' ' . $this->toString();
     }
 
     public function toString(): string
@@ -67,9 +68,18 @@ class DataEquals extends Constraint
     /**
      * @return array<string, mixed>
      */
-    public static function export(Data $model): array
+    public static function export(Data $data): array
     {
-        return $model->transform(
+        if (class_exists(TransformationContextFactory::class)) {
+            return $data->transform(
+                TransformationContextFactory::create()
+                    ->withValueTransformation(false)
+                    ->withWrapExecutionType(WrapExecutionType::Disabled)
+                    ->withoutPropertyNameMapping()
+            );
+        }
+
+        return $data->transform(
             transformValues: false,
             wrapExecutionType: WrapExecutionType::Disabled,
             mapPropertyNames: false

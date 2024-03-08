@@ -10,6 +10,7 @@ use PHPUnit\Framework\ExpectationFailedException;
 use Soyhuce\Testing\Match\Matcher;
 use Soyhuce\Testing\Tests\Fixtures\SimpleData;
 use Soyhuce\Testing\Tests\TestCase;
+use Spatie\LaravelData\DataCollection;
 
 /**
  * @coversDefaultClass \Soyhuce\Testing\Match\Matcher
@@ -138,7 +139,6 @@ class MatcherTest extends TestCase
     {
         $expected = new SimpleData('foo', 1);
         $value = SimpleData::from(['name' => 'foo', 'age' => 1]);
-        $value->getPartialTrees();
 
         $result = Matcher::make($expected)($value);
 
@@ -166,7 +166,6 @@ class MatcherTest extends TestCase
     {
         $expected = new SimpleData('foo', 1);
         $value = SimpleData::from(['name' => 'foo', 'age' => 1]);
-        $value->getPartialTrees();
 
         $result = Matcher::make(collect([$expected]))(collect([$value]));
 
@@ -179,15 +178,14 @@ class MatcherTest extends TestCase
      */
     public function matcherMatchesDataCollections(): void
     {
-        $expected = SimpleData::collection([
+        $expected = new DataCollection(SimpleData::class, [
             ['name' => 'foo', 'age' => 1],
             ['name' => 'bar', 'age' => 14],
         ]);
-        $value = SimpleData::collection([
+        $value = new DataCollection(SimpleData::class, [
             new SimpleData('foo', 1),
             new SimpleData('bar', 14),
         ]);
-        $value->getPartialTrees();
 
         $result = Matcher::make($expected)($value);
 
@@ -200,15 +198,14 @@ class MatcherTest extends TestCase
      */
     public function matcherFailsToMatchDataCollections(): void
     {
-        $expected = SimpleData::collection([
+        $expected = new DataCollection(SimpleData::class, [
             ['name' => 'foo', 'age' => 1],
             ['name' => 'bar', 'age' => 14],
         ]);
-        $value = SimpleData::collection([
+        $value = new DataCollection(SimpleData::class, [
             new SimpleData('bar', 14),
             new SimpleData('foo', 2),
         ]);
-        $value->getPartialTrees();
 
         $this->expectException(ExpectationFailedException::class);
         Matcher::make($expected)($value);

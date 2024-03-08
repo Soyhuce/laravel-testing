@@ -1,6 +1,21 @@
 parameters:
 	ignoreErrors:
 		-
+			message: "#^Unknown parameter \\$mapPropertyNames in call to method Spatie\\\\LaravelData\\\\Data\\:\\:transform\\(\\)\\.$#"
+			count: 1
+			path: src/Constraints/DataEquals.php
+
+		-
+			message: "#^Unknown parameter \\$transformValues in call to method Spatie\\\\LaravelData\\\\Data\\:\\:transform\\(\\)\\.$#"
+			count: 1
+			path: src/Constraints/DataEquals.php
+
+		-
+			message: "#^Unknown parameter \\$wrapExecutionType in call to method Spatie\\\\LaravelData\\\\Data\\:\\:transform\\(\\)\\.$#"
+			count: 1
+			path: src/Constraints/DataEquals.php
+
+		-
 			message: "#^Call to protected method getValidatorInstance\\(\\) of class Illuminate\\\\Foundation\\\\Http\\\\FormRequest\\.$#"
 			count: 1
 			path: src/FormRequest/TestFormRequest.php
