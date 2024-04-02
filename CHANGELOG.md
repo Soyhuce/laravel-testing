@@ -2,6 +2,15 @@
 
 All notable changes to `laravel-testing` will be documented in this file.
 
+## 2.6.0 - 2024-04-02
+
+### What's Changed
+
+* Improve equality of collections containing arrays or collections by @bastien-phi in https://github.com/Soyhuce/laravel-testing/pull/35
+* Bump dependabot/fetch-metadata from 1.6.0 to 2.0.0 by @dependabot in https://github.com/Soyhuce/laravel-testing/pull/34
+
+**Full Changelog**: https://github.com/Soyhuce/laravel-testing/compare/2.5.0...2.6.0
+
 ## 2.5.0 - 2024-03-08
 
 ### What's Changed
