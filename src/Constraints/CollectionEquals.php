@@ -9,6 +9,7 @@ use PHPUnit\Framework\Constraint\IsEqual;
 use PHPUnit\Framework\Constraint\IsIdentical;
 use SebastianBergmann\Comparator\ComparisonFailure;
 use SebastianBergmann\Exporter\Exporter;
+use function is_array;
 use function is_object;
 
 class CollectionEquals extends Constraint
@@ -58,13 +59,20 @@ class CollectionEquals extends Constraint
         foreach ($this->value as $key => $value) {
             $constraint = match (true) {
                 $value instanceof Model => new IsModel($value),
+                $value instanceof Collection => new self($value),
                 class_exists(\Spatie\LaravelData\Data::class) && $value instanceof \Spatie\LaravelData\Data => new DataEquals($value),
                 class_exists(\Spatie\LaravelData\DataCollection::class) && $value instanceof \Spatie\LaravelData\DataCollection => new DataCollectionEquals($value),
                 is_object($value) => new IsEqual($value),
+                is_array($value) => new self(Collection::make($value)),
                 default => new IsIdentical($value),
             };
 
-            if (!$constraint->evaluate($other->get($key), returnResult: true)) {
+            $otherValue = match (true) {
+                is_array($value) => Collection::make($other->get($key)),
+                default => $other->get($key),
+            };
+
+            if (!$constraint->evaluate($otherValue, returnResult: true)) {
                 return false;
             }
         }

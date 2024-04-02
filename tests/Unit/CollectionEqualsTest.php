@@ -31,6 +31,14 @@ class CollectionEqualsTest extends TestCase
                 new Collection([CarbonImmutable::create(2022, 5, 11)]),
                 new Collection([CarbonImmutable::createFromFormat('!Y-m-d', '2022-05-11')]),
             ],
+            [
+                new Collection([new Collection([1, 2, 3])]),
+                new Collection([new Collection([1, 2, 3])]),
+            ],
+            [
+                new Collection([[1, 2, 3]]),
+                new Collection([[1, 2, 3]]),
+            ],
         ];
     }
 
@@ -59,6 +67,14 @@ class CollectionEqualsTest extends TestCase
             [new Collection(['a' => 1, 'b' => 2, 'c' => 3]), new Collection(['a' => 1, 'c' => 3, 'b' => 2])],
             [new Collection(['a' => 1, 'b' => 2, 'c' => 3]), new Collection(['a' => 1, 'b' => 2, 3])],
             [new Collection([new User(['id' => 1, 'name' => 'John'])]),  new Collection([new User(['id' => 2, 'name' => 'Peter'])])],
+            [
+                new Collection([new Collection([1, 2, 3])]),
+                new Collection([new Collection([1, '2', 3])]),
+            ],
+            [
+                new Collection([[1, 2, 3]]),
+                new Collection([[1, '2', 3]]),
+            ],
         ];
     }
 
