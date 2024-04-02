@@ -81,11 +81,6 @@ parameters:
 			path: src/Mock/PendingActionMock.php
 
 		-
-			message: "#^Property Soyhuce\\\\Testing\\\\Mock\\\\PendingActionMock\\:\\:\\$mock \\(Mockery\\\\MockInterface\\) does not accept Mockery\\\\LegacyMockInterface\\.$#"
-			count: 1
-			path: src/Mock/PendingActionMock.php
-
-		-
 			message: "#^Access to an undefined property Soyhuce\\\\Testing\\\\TestResponse\\\\ContractAssertions\\:\\:\\$baseResponse\\.$#"
 			count: 1
 			path: src/TestResponse/ContractAssertions.php
