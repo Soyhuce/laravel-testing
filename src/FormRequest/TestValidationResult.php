@@ -10,6 +10,7 @@ use Illuminate\Validation\ValidationException;
 use PHPUnit\Framework\Assert;
 use function count;
 use function is_int;
+use function sprintf;
 
 /**
  * @see https://gist.github.com/colindecarlo/9ba9bd6524127fee7580ae66c6d4709d

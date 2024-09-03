@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use PHPUnit\Framework\Constraint\Constraint;
 use SebastianBergmann\Comparator\ComparisonFailure;
 use SebastianBergmann\Exporter\Exporter;
+use function sprintf;
 
 class IsModel extends Constraint
 {
