@@ -26,13 +26,18 @@ parameters:
 			path: src/Constraints/DataEquals.php
 
 		-
-			message: "#^Call to protected method getValidatorInstance\\(\\) of class Illuminate\\\\Foundation\\\\Http\\\\FormRequest\\.$#"
+			message: "#^Call to an undefined method Spatie\\\\Invade\\\\Invader\\<TRequest of Illuminate\\\\Foundation\\\\Http\\\\FormRequest\\>\\|Spatie\\\\Invade\\\\StaticInvader\\:\\:getValidatorInstance\\(\\)\\.$#"
 			count: 1
 			path: src/FormRequest/TestFormRequest.php
 
 		-
-			message: "#^Call to protected method passesAuthorization\\(\\) of class Illuminate\\\\Foundation\\\\Http\\\\FormRequest\\.$#"
+			message: "#^Call to an undefined method Spatie\\\\Invade\\\\Invader\\<TRequest of Illuminate\\\\Foundation\\\\Http\\\\FormRequest\\>\\|Spatie\\\\Invade\\\\StaticInvader\\:\\:passesAuthorization\\(\\)\\.$#"
 			count: 2
+			path: src/FormRequest/TestFormRequest.php
+
+		-
+			message: "#^Call to an undefined method Spatie\\\\Invade\\\\Invader\\<TRequest of Illuminate\\\\Foundation\\\\Http\\\\FormRequest\\>\\|Spatie\\\\Invade\\\\StaticInvader\\:\\:prepareForValidation\\(\\)\\.$#"
+			count: 1
 			path: src/FormRequest/TestFormRequest.php
 
 		-
@@ -84,6 +89,11 @@ parameters:
 			message: "#^Access to an undefined property Soyhuce\\\\Testing\\\\TestResponse\\\\ContractAssertions\\:\\:\\$baseResponse\\.$#"
 			count: 1
 			path: src/TestResponse/ContractAssertions.php
+
+		-
+			message: "#^Call to an undefined method Soyhuce\\\\Testing\\\\TestResponse\\\\DataAssertions\\:\\:assertJsonPathMissing\\(\\)\\.$#"
+			count: 2
+			path: src/TestResponse/DataAssertions.php
 
 		-
 			message: "#^Method Soyhuce\\\\Testing\\\\TestResponse\\\\DataAssertions\\:\\:assertDataPath\\(\\) invoked with 2 parameters, 0 required\\.$#"

@@ -35,6 +35,8 @@ class TestFormRequest
     {
         $this->request->request = new InputBag($data);
 
+        invade($this->request)->prepareForValidation();
+
         /** @var \Illuminate\Contracts\Validation\Validator $validator */
         $validator = invade($this->request)->getValidatorInstance();
 

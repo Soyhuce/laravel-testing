@@ -12,6 +12,7 @@ use Soyhuce\Testing\Concerns\TestsFormRequests;
 use Soyhuce\Testing\Tests\Fixtures\FormRequests\CreateUserRequest;
 use Soyhuce\Testing\Tests\Fixtures\FormRequests\FileRequest;
 use Soyhuce\Testing\Tests\Fixtures\FormRequests\UpdatePasswordRequest;
+use Soyhuce\Testing\Tests\Fixtures\FormRequests\WithPrepareValidationRequest;
 use Soyhuce\Testing\Tests\TestCase;
 
 /**
@@ -232,5 +233,29 @@ class TestFormRequestTest extends TestCase
                 'password_confirmation' => 'new-password',
             ])
             ->assertPasses();
+    }
+
+    /**
+     * @test
+     * @covers ::validate
+     */
+    public function prepareForValidationIsCalled(): void
+    {
+        Model::unguard();
+
+        $this->createRequest(WithPrepareValidationRequest::class)
+            ->withParam('user', new User(['email' => 'peter.jackson']))
+            ->validate()
+            ->assertFails([
+                'user_email' => 'The user email field must be a valid email address.',
+            ]);
+
+        $this->createRequest(WithPrepareValidationRequest::class)
+            ->withParam('user', new User(['email' => 'peter.jackson@email.com']))
+            ->validate()
+            ->assertPasses()
+            ->assertValidated([
+                'user_email' => 'peter.jackson@email.com',
+            ]);
     }
 }
