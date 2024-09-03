@@ -2,6 +2,17 @@
 
 All notable changes to `laravel-testing` will be documented in this file.
 
+## 2.7.0 - 2024-09-03
+
+### What's Changed
+
+* Bump dependabot/fetch-metadata from 2.0.0 to 2.1.0 by @dependabot in https://github.com/Soyhuce/laravel-testing/pull/36
+* Bump dependabot/fetch-metadata from 2.1.0 to 2.2.0 by @dependabot in https://github.com/Soyhuce/laravel-testing/pull/37
+* Call prepareForValidation before validating a FormRequest by @bastien-phi in https://github.com/Soyhuce/laravel-testing/pull/38
+* Fix badges by @bastien-phi in https://github.com/Soyhuce/laravel-testing/pull/39
+
+**Full Changelog**: https://github.com/Soyhuce/laravel-testing/compare/2.6.0...2.7.0
+
 ## 2.6.0 - 2024-04-02
 
 ### What's Changed
