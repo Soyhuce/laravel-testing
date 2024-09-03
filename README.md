@@ -1,9 +1,9 @@
 # Helpers for Laravel tests
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/soyhuce/laravel-testing.svg?style=flat-square)](https://packagist.org/packages/soyhuce/laravel-testing)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/soyhuce/laravel-testing/run-tests?label=tests)](https://github.com/soyhuce/laravel-testing/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/soyhuce/laravel-testing/Check%20&%20fix%20styling?label=code%20style)](https://github.com/soyhuce/laravel-testing/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
-[![GitHub PHPStan Action Status](https://img.shields.io/github/workflow/status/soyhuce/laravel-testing/PHPStan?label=phpstan)](https://github.com/soyhuce/laravel-testing/actions?query=workflow%3APHPStan+branch%3Amain)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/soyhuce/laravel-testing/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/soyhuce/laravel-testing/actions/workflows/run-tests.yml)
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/soyhuce/laravel-testing/phpstan.yml?branch=main&label=phpstan&style=flat-square)](https://github.com/soyhuce/laravel-testing/actions/workflows/phpstan.yml)
+[![GitHub PHPStan Action Status](https://img.shields.io/github/actions/workflow/status/soyhuce/laravel-testing/php-cs-fixer.yml?branch=main&label=php-cs-fixer&style=flat-square)](https://github.com/soyhuce/laravel-testing/actions/workflows/php-cs-fixer.yml)
 [![Total Downloads](https://img.shields.io/packagist/dt/soyhuce/laravel-testing.svg?style=flat-square)](https://packagist.org/packages/soyhuce/laravel-testing)
 
 Extra tools for your laravel tests
