@@ -20,7 +20,7 @@
         "illuminate/database": "^10.0 || ^11.0",
         "illuminate/support": "^10.0 || ^11.0",
         "illuminate/testing": "^10.0 || ^11.0",
-        "phpunit/phpunit": "^10.0",
+        "phpunit/phpunit": "^10.0 || ^11.0",
         "spatie/invade": "^1.0 || ^2.0"
     },
     "require-dev": {
@@ -28,8 +28,8 @@
         "nunomaduro/collision": "^7.10 || ^8.0",
         "larastan/larastan": "^2.9.2",
         "orchestra/testbench": "^8.0 || ^9.0",
-        "pestphp/pest": "^2.24",
-        "pestphp/pest-plugin-laravel": "^2.2",
+        "pestphp/pest": "^2.24 || ^3.0",
+        "pestphp/pest-plugin-laravel": "^2.2 || ^v3.0.0",
         "phpstan/extension-installer": "^1.1",
         "phpstan/phpstan-deprecation-rules": "^1.0",
         "phpstan/phpstan-phpunit": "^1.0",
