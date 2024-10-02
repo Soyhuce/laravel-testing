@@ -26,7 +26,6 @@ jobs:
         exclude:
           - laravel: 10.*
             phpunit: ^11.0
-            stability: prefer-lowest
           - laravel: 11.*
             laravel-data: ^3.9
 
