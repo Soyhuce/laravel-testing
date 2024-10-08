@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-testing` will be documented in this file.
 
+## 2.8.0 - 2024-10-08
+
+### What's Changed
+
+* Allow PHPUnit 11, run tests with phpunit 11 by @bastien-phi in https://github.com/Soyhuce/laravel-testing/pull/40
+
+**Full Changelog**: https://github.com/Soyhuce/laravel-testing/compare/2.7.0...2.8.0
+
 ## 2.7.0 - 2024-09-03
 
 ### What's Changed
