@@ -4,6 +4,7 @@ namespace Soyhuce\Testing\Concerns;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
 use Illuminate\Routing\Route;
 use Soyhuce\Testing\FormRequest\TestFormRequest;
 use Symfony\Component\HttpFoundation\Request as SymfonyRequest;
@@ -30,15 +31,16 @@ trait TestsFormRequests
             array_replace($this->serverVariables, $this->transformHeadersToServerVars($headers))
         );
 
-        $formRequest = FormRequest::createFrom(
-            Request::createFromBase($symfonyRequest),
-            new $requestClass()
-        )
-            ->setContainer($this->app);
+        $request = Request::createFromBase($symfonyRequest);
+        $this->app->instance('request', $request);
 
         $route = new Route('POST', '/test/route', fn () => null);
         $route->parameters = [];
-        $formRequest->setRouteResolver(fn () => $route);
+        $request->setRouteResolver(fn () => $route);
+
+        $formRequest = FormRequest::createFrom($request, new $requestClass())
+            ->setContainer($this->app)
+            ->setRedirector($this->app->make(Redirector::class));
 
         return new TestFormRequest($formRequest);
     }
