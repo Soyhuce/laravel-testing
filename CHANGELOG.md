@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-testing` will be documented in this file.
 
+## 2.9.0 - 2024-10-08
+
+### What's Changed
+
+* Improve FormRequest creation to match framework way by @bastien-phi in https://github.com/Soyhuce/laravel-testing/pull/41
+
+**Full Changelog**: https://github.com/Soyhuce/laravel-testing/compare/2.8.0...2.9.0
+
 ## 2.8.0 - 2024-10-08
 
 ### What's Changed
