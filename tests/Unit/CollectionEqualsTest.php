@@ -47,9 +47,6 @@ class CollectionEqualsTest extends TestCase
     {
         Model::unguard();
 
-        $dataJohn = new SimpleData('John', 25);
-        $dataJack = new SimpleData('Jack', 30);
-
         return [
             [new Collection([1, 2, 3]), new Collection([2, 1, 3])],
             [[1, 2, 3], new Collection([1, 3, 2])],
@@ -90,8 +87,8 @@ class CollectionEqualsTest extends TestCase
                 new Collection([[2, 1, 3], [1, 2, 3]]),
             ],
             [
-                [$dataJohn, $dataJack],
-                new Collection([$dataJack, $dataJohn]),
+                [new SimpleData('John', 25), new SimpleData('Jack', 30)],
+                new Collection([new SimpleData('Jack', 30), new SimpleData('John', 25)]),
             ],
         ];
     }
@@ -145,10 +142,6 @@ class CollectionEqualsTest extends TestCase
     {
         Model::unguard();
 
-        $dataJohn = new SimpleData('John', 25);
-        $dataJack = new SimpleData('Jack', 30);
-        $dataJim = new SimpleData('Jim', 35);
-
         return [
             [new Collection([1, 2]), new Collection([1, 2, 3])],
             [new Collection([1, 2, 3]), new Collection([1, 2])],
@@ -185,8 +178,8 @@ class CollectionEqualsTest extends TestCase
                 new Collection([[1, '2', 3]]),
             ],
             [
-                [$dataJohn, $dataJack],
-                new Collection([$dataJack, $dataJim]),
+                [new SimpleData('John', 25), new SimpleData('Jack', 30)],
+                new Collection([new SimpleData('Jack', 30), new SimpleData('Jim', 35)]),
             ]
         ];
     }
