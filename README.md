@@ -101,7 +101,6 @@ $this->assertCollectionEqualsCanonicalizing($collection1, $collection2);
 ```php
 $this->assertCollectionEqualsCanonicalizing(new Collection([1, 2]), new Collection([1, 2, 3])); // fail
 $this->assertCollectionEqualsCanonicalizing(new Collection([1, 2, 3]), new Collection([1, 2])); // fail
-$this->assertCollectionEqualsCanonicalizing(new Collection([1, 2, 3]), new Collection([3, 1, 2])); // fail
 $this->assertCollectionEqualsCanonicalizing(new Collection([1, 2, 3]), new Collection([1, 2, "3"])); // fail
 $this->assertCollectionEqualsCanonicalizing(new Collection(['a' => 1, 'b' => 2, 'c' => 3]), new Collection(['a' => 1, 'b' => 2])); // fail
 $this->assertCollectionEqualsCanonicalizing(new Collection(['a' => 1, 'b' => 2, 'c' => 3]), new Collection(['a' => 1, 'b' => 2, 'c' => 4])); // fail
