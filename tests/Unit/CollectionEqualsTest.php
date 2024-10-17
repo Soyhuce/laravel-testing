@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Collection;
 use PHPUnit\Framework\ExpectationFailedException;
 use Soyhuce\Testing\Concerns\LaravelAssertions;
+use Soyhuce\Testing\Tests\Fixtures\SimpleData;
 use Soyhuce\Testing\Tests\TestCase;
 
 /**
@@ -45,6 +46,9 @@ class CollectionEqualsTest extends TestCase
     public static function sameUnorderedCollection(): array
     {
         Model::unguard();
+
+        $dataJohn = new SimpleData('John', 25);
+        $dataJack = new SimpleData('Jack', 30);
 
         return [
             [new Collection([1, 2, 3]), new Collection([2, 1, 3])],
@@ -84,6 +88,10 @@ class CollectionEqualsTest extends TestCase
             [
                 new Collection([[1, 2, 3], [2, 1, 3]]),
                 new Collection([[2, 1, 3], [1, 2, 3]]),
+            ],
+            [
+                [$dataJohn, $dataJack],
+                new Collection([$dataJack, $dataJohn]),
             ],
         ];
     }
@@ -137,6 +145,10 @@ class CollectionEqualsTest extends TestCase
     {
         Model::unguard();
 
+        $dataJohn = new SimpleData('John', 25);
+        $dataJack = new SimpleData('Jack', 30);
+        $dataJim = new SimpleData('Jim', 35);
+
         return [
             [new Collection([1, 2]), new Collection([1, 2, 3])],
             [new Collection([1, 2, 3]), new Collection([1, 2])],
@@ -172,6 +184,10 @@ class CollectionEqualsTest extends TestCase
                 new Collection([[1, 2, 3]]),
                 new Collection([[1, '2', 3]]),
             ],
+            [
+                [$dataJohn, $dataJack],
+                new Collection([$dataJack, $dataJim]),
+            ]
         ];
     }
 

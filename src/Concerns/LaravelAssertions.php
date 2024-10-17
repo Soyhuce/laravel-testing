@@ -52,9 +52,9 @@ trait LaravelAssertions
             $expected = new Collection($expected);
         }
 
-        $expected = $expected->sort();
+        $expected = Arr::isList($expected->all()) ? $expected->sort()->values() : $expected->sort();
 
-        if ($actual instanceof Collection && $actual->isNotEmpty()) {
+        if ($actual instanceof Collection) {
             $actual = Arr::isList($actual->all()) ? $actual->sort()->values() : $actual->sort();
         }
 
