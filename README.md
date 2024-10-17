@@ -86,6 +86,52 @@ public function theUsersAreOrdered(): void
 } 
 ```
 
+#### assertCollectionEqualsCanonicalizing
+
+Matches if the collections are canonically equals.
+
+```php
+$collection1 = new Collection(['1', '2', '3']);
+$collection2 = new Collection(['3', '2', '1']);
+$this->assertCollectionEqualsCanonicalizing($collection1, $collection2);
+```
+
+2 Collections are considered equal if they contain the same elements, indexed by the same keys.
+
+```php
+$this->assertCollectionEqualsCanonicalizing(new Collection([1, 2]), new Collection([1, 2, 3])); // fail
+$this->assertCollectionEqualsCanonicalizing(new Collection([1, 2, 3]), new Collection([1, 2])); // fail
+$this->assertCollectionEqualsCanonicalizing(new Collection([1, 2, 3]), new Collection([3, 1, 2])); // fail
+$this->assertCollectionEqualsCanonicalizing(new Collection([1, 2, 3]), new Collection([1, 2, "3"])); // fail
+$this->assertCollectionEqualsCanonicalizing(new Collection(['a' => 1, 'b' => 2, 'c' => 3]), new Collection(['a' => 1, 'b' => 2])); // fail
+$this->assertCollectionEqualsCanonicalizing(new Collection(['a' => 1, 'b' => 2, 'c' => 3]), new Collection(['a' => 1, 'b' => 2, 'c' => 4])); // fail
+$this->assertCollectionEqualsCanonicalizing(new Collection(['a' => 1, 'b' => 2, 'c' => 3]), new Collection(['a' => 1, 'b' => 2, 3])); // fail
+```
+
+If the Collections contain Models, `assertCollectionEqualsCanonicalizing` will use Model comparison of `assertIsModel`.
+
+```php
+$user1 = User::factory()->createOne();
+$user2 = User::find($user1->id);
+$this->assertCollectionEqualsCanonicalizing(collect([$user1]), collect([$user2])); // Success
+```
+
+You can give an array in the `$expected` parameter of `assertCollectionEqualsCanonicalizing` :
+
+```php
+/** @test */
+public function theUsersAreOrdered(): void
+{
+    $user1 = User::factory()->createOne();
+    $user2 = User::factory()->createOne();
+    
+    $this->assertCollectionEqualsCanonicalizing(
+        [$user1, $user2],
+        User::query()->get()
+    );
+} 
+```
+
 ### TestResponse assertions
 
 All these methods are available in `Illuminate\Testing\TestResponse`:
