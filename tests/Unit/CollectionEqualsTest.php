@@ -49,11 +49,23 @@ class CollectionEqualsTest extends TestCase
         return [
             [new Collection([1, 2, 3]), new Collection([2, 1, 3])],
             [[1, 2, 3], new Collection([1, 3, 2])],
+            [new Collection([1 => 1, 0 => 2, 3 => 3]), new Collection([0 => 2, 1 => 1, 3 => 3])],
+            [[1 => 1, 0 => 2, 3 => 3], new Collection([1 => 1, 3 => 3, 0 => 2])],
             [new Collection(['a' => 1, 'b' => 2, 'c' => 3]), new Collection(['a' => 1, 'c' => 3, 'b' => 2])],
             [['c' => 3, 'a' => 1, 'b' => 2], new Collection(['a' => 1, 'b' => 2, 'c' => 3])],
             [
                 new Collection([new User(['id' => 1, 'name' => 'John']), new User(['id' => 2, 'name' => 'Jack'])]),
                 new Collection([new User(['id' => 2, 'name' => 'Jack']), new User(['id' => 1, 'name' => 'Peter'])]),
+            ],
+            [
+                new Collection([
+                    'John' => new User(['id' => 1, 'name' => 'John']),
+                    'Jack' => new User(['id' => 2, 'name' => 'Jack']),
+                ]),
+                new Collection([
+                    'Jack' => new User(['id' => 2, 'name' => 'Jack']),
+                    'John' => new User(['id' => 1, 'name' => 'John']),
+                ]),
             ],
             [
                 new Collection([
@@ -131,12 +143,27 @@ class CollectionEqualsTest extends TestCase
             [new Collection([1, 2, 3]), new Collection([3, 1, 4])],
             [new Collection([1, 2, 3]), new Collection([3, 1, 5])],
             [new Collection([1, 2, 3]), new Collection([1, 2, '3'])],
+            [new Collection([1 => 1, 0 => 2, 3 => 3]), new Collection([0 => 2, 1 => 1, 3 => 6])],
+            [[1 => 1, 0 => 2, 3 => 3], new Collection([1 => 1, 4 => 3, 0 => 2])],
             [new Collection(['a' => 1, 'b' => 2, 'c' => 3]), new Collection(['a' => 1, 'b' => 2])],
             [new Collection(['a' => 1, 'b' => 2, 'c' => 3]), new Collection(['a' => 1, 'b' => 2, 'c' => 4])],
             [new Collection(['a' => 1, 'b' => 2, 'c' => 3]), new Collection(['a' => 1, 'b' => 2, 'd' => 3])],
             [new Collection(['a' => 1, 'b' => 2, 'c' => 3]), new Collection(['a' => 1, 'c' => 6, 'b' => 2])],
             [new Collection(['a' => 1, 'b' => 2, 'c' => 3]), new Collection(['a' => 1, 'b' => 2, 3])],
-            [new Collection([new User(['id' => 1, 'name' => 'John'])]),  new Collection([new User(['id' => 2, 'name' => 'Peter'])])],
+            [
+                new Collection([new User(['id' => 1, 'name' => 'John']), new User(['id' => 2, 'name' => 'Jack'])]),
+                new Collection([new User(['id' => 2, 'name' => 'Jack']), new User(['id' => 5, 'name' => 'Peter'])]),
+            ],
+            [
+                new Collection([
+                    'id1' => new User(['id' => 1, 'name' => 'John']),
+                    'id2' => new User(['id' => 2, 'name' => 'Jack']),
+                ]),
+                new Collection([
+                    'id2' => new User(['id' => 4, 'name' => 'Jack']),
+                    'id1' => new User(['id' => 1, 'name' => 'John']),
+                ]),
+            ],
             [
                 new Collection([new Collection([1, 2, 3])]),
                 new Collection([new Collection([1, '2', 3])]),
