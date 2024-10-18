@@ -2,6 +2,18 @@
 
 All notable changes to `laravel-testing` will be documented in this file.
 
+## 2.10.0 - 2024-10-18
+
+### What's Changed
+
+* Introduce assertCollectionEqualsCanonicalizing method by @mulertech in https://github.com/Soyhuce/laravel-testing/pull/42
+
+### New Contributors
+
+* @mulertech made their first contribution in https://github.com/Soyhuce/laravel-testing/pull/42
+
+**Full Changelog**: https://github.com/Soyhuce/laravel-testing/compare/2.9.0...2.10.0
+
 ## 2.9.0 - 2024-10-08
 
 ### What's Changed
