@@ -46,7 +46,7 @@ trait LaravelAssertions
     public static function assertCollectionEqualsCanonicalizing(
         Collection|array $expected,
         mixed $actual,
-        string $message = ''
+        string $message = '',
     ): void {
         if (is_array($expected)) {
             $expected = new Collection($expected);

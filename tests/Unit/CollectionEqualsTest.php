@@ -180,7 +180,7 @@ class CollectionEqualsTest extends TestCase
             [
                 [new SimpleData('John', 25), new SimpleData('Jack', 30)],
                 new Collection([new SimpleData('Jack', 30), new SimpleData('Jim', 35)]),
-            ]
+            ],
         ];
     }
 
