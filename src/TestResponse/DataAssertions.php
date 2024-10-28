@@ -27,6 +27,15 @@ class DataAssertions
         };
     }
 
+    public function assertDataPathCanonicalizing(): Closure
+    {
+        return function (string $key, array $expect): self {
+            $this->assertJsonPathCanonicalizing("data.{$key}", $expect);
+
+            return $this;
+        };
+    }
+
     public function assertDataPaths(): Closure
     {
         /**
@@ -35,6 +44,20 @@ class DataAssertions
         return function (array $expectations): self {
             foreach ($expectations as $key => $expect) {
                 $this->assertDataPath($key, $expect);
+            }
+
+            return $this;
+        };
+    }
+
+    public function assertDataPathsCanonicalizing(): Closure
+    {
+        /**
+         * @param array<string, array<string, mixed>> $expectations
+         */
+        return function (array $expectations): self {
+            foreach ($expectations as $key => $expect) {
+                $this->assertDataPathCanonicalizing($key, $expect);
             }
 
             return $this;

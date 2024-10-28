@@ -101,6 +101,11 @@ parameters:
 			path: src/TestResponse/DataAssertions.php
 
 		-
+			message: "#^Method Soyhuce\\\\Testing\\\\TestResponse\\\\DataAssertions\\:\\:assertDataPathCanonicalizing\\(\\) invoked with 2 parameters, 0 required\\.$#"
+			count: 1
+			path: src/TestResponse/DataAssertions.php
+
+		-
 			message: "#^Access to an undefined property Soyhuce\\\\Testing\\\\TestResponse\\\\ViewAssertions\\:\\:\\$original\\.$#"
 			count: 1
 			path: src/TestResponse/ViewAssertions.php

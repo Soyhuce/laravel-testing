@@ -123,6 +123,70 @@ class DataAssertionsTest extends TestCase
         $response->assertDataPath($path, $expected);
     }
 
+    public static function goodAssertDataPathCanonicalizingData()
+    {
+        return [
+            [
+                'key', ['foo', 'bar'], ['key' => ['bar', 'foo']],
+            ],
+            [
+                'key', ['baz' => 'foz', 'foo' => 'bar'], ['key' => ['foo' => 'bar', 'baz' => 'foz']],
+            ],
+            [
+                '*.id', [1, 2], [['id' => 1], ['id' => 2]],
+            ],
+            [
+                '*.id', [2, 1], [['id' => 1], ['id' => 2]],
+            ],
+            [
+                '*.id', [1, 2], [['id' => 2], ['id' => 1]],
+            ],
+        ];
+    }
+
+    /**
+     * @test
+     * @covers       \Soyhuce\Testing\TestResponse\DataAssertions::assertDataPathCanonicalizing
+     * @dataProvider goodAssertDataPathCanonicalizingData
+     */
+    public function assertDataPathCanonicalizingIsSuccessfulWhenDataMatches(
+        string $path,
+        array $expected,
+        array $actual,
+    ): void {
+        $response = new TestResponse(new Response(['data' => $actual]));
+
+        $response->assertDataPathCanonicalizing($path, $expected);
+    }
+
+    public static function badAssertDataPathCanonicalizingData()
+    {
+        return [
+            [
+                'key', ['baz' => 'foz', 'foo' => 'bar'], ['key' => ['bar' => 'foo', 'foz' => 'baz']],
+            ],
+            [
+                '*.id', [1, 2], [['id' => 1]],
+            ],
+            [
+                '*.id', [1, 2], [['id' => 1], ['id' => 2], ['id' => 3]],
+            ],
+        ];
+    }
+
+    /**
+     * @test
+     * @covers       \Soyhuce\Testing\TestResponse\DataAssertions::assertDataPathCanonicalizing
+     * @dataProvider badAssertDataPathCanonicalizingData
+     */
+    public function assertDataPathCanonicalizingIsNotSuccessfulWhenDataDoesNotMatch(string $path, mixed $expected, array $actual): void
+    {
+        $response = new TestResponse(new Response(['data' => $actual]));
+
+        $this->expectException(ExpectationFailedException::class);
+        $response->assertDataPathCanonicalizing($path, $expected);
+    }
+
     /**
      * @test
      * @covers \Soyhuce\Testing\TestResponse\DataAssertions::assertDataPaths
@@ -147,6 +211,44 @@ class DataAssertionsTest extends TestCase
                 ['foo' => 'bar'], [['foo' => 'toto'], ['foo' => 'baz']],
             ],
         ];
+    }
+
+    /**
+     * @test
+     * @covers \Soyhuce\Testing\TestResponse\DataAssertions::assertDataPathsCanonicalizing
+     */
+    public function assertDataPathsCanonicalizingIsSuccessful(): void
+    {
+        $data = [
+            'data' => [
+                'foo' => ['baz', 'boz', 'bar'],
+                'bar' => [
+                    'baz' => 'faz',
+                    'boz' => 'foz',
+                ],
+                'key' => [
+                    ['foo' => 'baz'],
+                    ['foo' => 'boz'],
+                    ['foo' => 'bar'],
+                ],
+                'baz' => [
+                    ['id' => 1],
+                    ['id' => 2],
+                    ['id' => 3],
+                ],
+                'boz' => [1, 2, 3],
+            ],
+        ];
+
+        $response = new TestResponse(new Response($data));
+
+        $response->assertDataPathsCanonicalizing([
+            'foo' => ['bar', 'baz', 'boz'],
+            'bar' => ['boz' => 'foz', 'baz' => 'faz'],
+            'key.*.foo' => ['bar', 'baz', 'boz'],
+            'baz.*.id' => [3, 1, 2],
+            'boz' => [2, 3, 1],
+        ]);
     }
 
     /**
