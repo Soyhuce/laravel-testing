@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-testing` will be documented in this file.
 
+## 2.10.1 - 2024-10-28
+
+### What's Changed
+
+* Introduce assertDataPathCanonicalizing method by @EdenMl in https://github.com/Soyhuce/laravel-testing/pull/43
+
+**Full Changelog**: https://github.com/Soyhuce/laravel-testing/compare/2.10.0...2.10.1
+
 ## 2.10.0 - 2024-10-18
 
 ### What's Changed
