@@ -146,6 +146,8 @@ Requires [hotmeteor/spectator](https://github.com/hotmeteor/spectator/) package
 - `TestResponse::assertData($expect)` : Alias for `assertJsonPath('data', $expect)`
 - `TestResponse::assertDataPath(string $path, $expect)` : Alias for `assertJsonPath('data.'.$path, $expect)`
 - `TestResponse::assertDataPaths(array $expectations)` : Runs `assertDataPath` for each `$path` => `$expect` pair in the array.
+- `TestResponse::assertDataPathCanonicalizing(string $path, array $expect)` : Alias for `assertJsonPathCanonicalizing('data.'.$path, $expect)`
+- `TestResponse::assertDataPathsCanonicalizing(array<array> $expectations)` : Runs `assertDataPathCanonicalizing` for each `$path` => `$expect` pair in the array.
 - `TestResponse::assertDataMissing($item)` : Alias for `assertJsonMissingPath('data', $item)`
 - `TestResponse::assertDataPathMissing(string $path, $item)` : Alias for `assertJsonMissingPath('data.'.$path, $item)`
 
