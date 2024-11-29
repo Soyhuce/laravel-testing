@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-testing` will be documented in this file.
 
+## 2.11.0 - 2024-11-29
+
+### What's Changed
+
+* Upgrade dependencies, test with php 8.4, drop PHP 8.2 and Laravel 10 support by @bastien-phi in https://github.com/Soyhuce/laravel-testing/pull/44
+
+**Full Changelog**: https://github.com/Soyhuce/laravel-testing/compare/2.10.1...2.11.0
+
 ## 2.10.1 - 2024-10-28
 
 ### What's Changed
