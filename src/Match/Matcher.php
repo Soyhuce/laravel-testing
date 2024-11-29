@@ -55,7 +55,7 @@ class Matcher
     }
 
     /**
-     * @param array<array-key, mixed>|\Illuminate\Support\Collection<array-key, mixed> $expected
+     * @param array<array-key, mixed>|Collection<array-key, mixed> $expected
      */
     public static function collectionEquals(Collection|array $expected): Closure
     {

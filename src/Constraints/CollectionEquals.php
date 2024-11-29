@@ -15,7 +15,7 @@ use function is_object;
 class CollectionEquals extends Constraint
 {
     /**
-     * @param \Illuminate\Support\Collection<array-key, mixed> $value
+     * @param Collection<array-key, mixed> $value
      */
     public function __construct(
         protected Collection $value,
@@ -72,7 +72,7 @@ class CollectionEquals extends Constraint
                 default => $other->get($key),
             };
 
-            if (!$constraint->evaluate($otherValue, returnResult: true)) {
+            if (!$constraint->evaluate($otherValue, '', true)) {
                 return false;
             }
         }
@@ -95,8 +95,8 @@ class CollectionEquals extends Constraint
     }
 
     /**
-     * @param \Illuminate\Support\Collection<array-key, mixed> $value
-     * @return \Illuminate\Support\Collection<array-key, mixed>
+     * @param Collection<array-key, mixed> $value
+     * @return Collection<array-key, mixed>
      */
     private function formatCollection(Collection $value): Collection
     {

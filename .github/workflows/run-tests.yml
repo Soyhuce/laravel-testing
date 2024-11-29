@@ -13,23 +13,18 @@ jobs:
       fail-fast: true
       matrix:
         os: [ubuntu-latest]
-        php: [8.2, 8.3]
-        laravel: [10.*, 11.*]
+        php: [8.3, 8.4]
+        laravel: [^11.0]
         phpunit: [^10.0, ^11.0]
-        laravel-data: [^3.9, ^4.0]
         stability: [prefer-lowest, prefer-stable]
         include:
-          - laravel: 10.*
-            testbench: 8.*
-          - laravel: 11.*
-            testbench: 9.*
+          - laravel: ^11.0
+            testbench: ^9.0
         exclude:
-          - laravel: 10.*
-            phpunit: ^11.0
-          - laravel: 11.*
-            laravel-data: ^3.9
+          - php: 8.4
+            stability: prefer-lowest
 
-    name: P${{ matrix.php }} - L${{ matrix.laravel }} - PU${{ matrix.phpunit }}- DATA${{ matrix.laravel-data }}- ${{ matrix.stability }} - ${{ matrix.os }}
+    name: P${{ matrix.php }} - L${{ matrix.laravel }} - PU${{ matrix.phpunit }}- ${{ matrix.stability }} - ${{ matrix.os }}
 
     steps:
       - name: Checkout code
@@ -49,7 +44,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" "phpunit/phpunit:${{ matrix.phpunit }}"  "spatie/laravel-data:${{ matrix.laravel-data }}" --no-interaction --no-update
+          composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" "phpunit/phpunit:${{ matrix.phpunit }}" --no-interaction --no-update
           composer update --${{ matrix.stability }} --prefer-dist --no-interaction
 
       - name: Execute tests

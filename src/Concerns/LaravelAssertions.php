@@ -26,7 +26,7 @@ trait LaravelAssertions
 
     /**
      * @static
-     * @param array<array-key, mixed>|\Illuminate\Support\Collection<array-key, mixed> $expected
+     * @param array<array-key, mixed>|Collection<array-key, mixed> $expected
      */
     public static function assertCollectionEquals(Collection|array $expected, mixed $actual, string $message = ''): void
     {
@@ -41,7 +41,7 @@ trait LaravelAssertions
 
     /**
      * @static
-     * @param array<array-key, mixed>|\Illuminate\Support\Collection<array-key, mixed> $expected
+     * @param array<array-key, mixed>|Collection<array-key, mixed> $expected
      */
     public static function assertCollectionEqualsCanonicalizing(
         Collection|array $expected,
@@ -72,7 +72,7 @@ trait LaravelAssertions
 
     /**
      * @static
-     * @param array<array-key, mixed>|\Spatie\LaravelData\DataCollection<array-key, mixed> $expected
+     * @param array<array-key, mixed>|DataCollection<array-key, mixed> $expected
      */
     public static function assertDataCollectionEquals(
         DataCollection|array $expected,
