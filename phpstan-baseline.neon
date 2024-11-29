@@ -1,112 +1,152 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Unable to resolve the template type TMakeKey in call to method static method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:make\\(\\)$#"
+			message: '#^Trait Soyhuce\\Testing\\Concerns\\MocksActions is used zero times and is not analysed\.$#'
+			identifier: trait.unused
+			count: 1
+			path: src/Concerns/MocksActions.php
+
+		-
+			message: '#^Trait Soyhuce\\Testing\\Concerns\\TestsFormRequests is used zero times and is not analysed\.$#'
+			identifier: trait.unused
+			count: 1
+			path: src/Concerns/TestsFormRequests.php
+
+		-
+			message: '#^Trait Soyhuce\\Testing\\Concerns\\TestsJsonResources is used zero times and is not analysed\.$#'
+			identifier: trait.unused
+			count: 1
+			path: src/Concerns/TestsJsonResources.php
+
+		-
+			message: '#^Unable to resolve the template type TMakeKey in call to method static method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:make\(\)$#'
+			identifier: argument.templateType
 			count: 1
 			path: src/Constraints/CollectionEquals.php
 
 		-
-			message: "#^Unable to resolve the template type TMakeValue in call to method static method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:make\\(\\)$#"
+			message: '#^Unable to resolve the template type TMakeValue in call to method static method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:make\(\)$#'
+			identifier: argument.templateType
 			count: 1
 			path: src/Constraints/CollectionEquals.php
 
 		-
-			message: "#^Unknown parameter \\$mapPropertyNames in call to method Spatie\\\\LaravelData\\\\Data\\:\\:transform\\(\\)\\.$#"
+			message: '#^Unknown parameter \$mapPropertyNames in call to method Spatie\\LaravelData\\Data\:\:transform\(\)\.$#'
+			identifier: argument.unknown
 			count: 1
 			path: src/Constraints/DataEquals.php
 
 		-
-			message: "#^Unknown parameter \\$transformValues in call to method Spatie\\\\LaravelData\\\\Data\\:\\:transform\\(\\)\\.$#"
+			message: '#^Unknown parameter \$transformValues in call to method Spatie\\LaravelData\\Data\:\:transform\(\)\.$#'
+			identifier: argument.unknown
 			count: 1
 			path: src/Constraints/DataEquals.php
 
 		-
-			message: "#^Unknown parameter \\$wrapExecutionType in call to method Spatie\\\\LaravelData\\\\Data\\:\\:transform\\(\\)\\.$#"
+			message: '#^Unknown parameter \$wrapExecutionType in call to method Spatie\\LaravelData\\Data\:\:transform\(\)\.$#'
+			identifier: argument.unknown
 			count: 1
 			path: src/Constraints/DataEquals.php
 
 		-
-			message: "#^Call to an undefined method Spatie\\\\Invade\\\\Invader\\<TRequest of Illuminate\\\\Foundation\\\\Http\\\\FormRequest\\>\\|Spatie\\\\Invade\\\\StaticInvader\\:\\:getValidatorInstance\\(\\)\\.$#"
+			message: '#^Call to an undefined method Spatie\\Invade\\Invader\<TRequest of Illuminate\\Foundation\\Http\\FormRequest\>\|Spatie\\Invade\\StaticInvader\:\:getValidatorInstance\(\)\.$#'
+			identifier: method.notFound
 			count: 1
 			path: src/FormRequest/TestFormRequest.php
 
 		-
-			message: "#^Call to an undefined method Spatie\\\\Invade\\\\Invader\\<TRequest of Illuminate\\\\Foundation\\\\Http\\\\FormRequest\\>\\|Spatie\\\\Invade\\\\StaticInvader\\:\\:passesAuthorization\\(\\)\\.$#"
+			message: '#^Call to an undefined method Spatie\\Invade\\Invader\<TRequest of Illuminate\\Foundation\\Http\\FormRequest\>\|Spatie\\Invade\\StaticInvader\:\:passesAuthorization\(\)\.$#'
+			identifier: method.notFound
 			count: 2
 			path: src/FormRequest/TestFormRequest.php
 
 		-
-			message: "#^Call to an undefined method Spatie\\\\Invade\\\\Invader\\<TRequest of Illuminate\\\\Foundation\\\\Http\\\\FormRequest\\>\\|Spatie\\\\Invade\\\\StaticInvader\\:\\:prepareForValidation\\(\\)\\.$#"
+			message: '#^Call to an undefined method Spatie\\Invade\\Invader\<TRequest of Illuminate\\Foundation\\Http\\FormRequest\>\|Spatie\\Invade\\StaticInvader\:\:prepareForValidation\(\)\.$#'
+			identifier: method.notFound
 			count: 1
 			path: src/FormRequest/TestFormRequest.php
 
 		-
-			message: "#^Cannot call method setParameter\\(\\) on Illuminate\\\\Routing\\\\Route\\|null\\.$#"
+			message: '#^Cannot call method setParameter\(\) on Illuminate\\Routing\\Route\|null\.$#'
+			identifier: method.nonObject
 			count: 1
 			path: src/FormRequest/TestFormRequest.php
 
 		-
-			message: "#^Parameter \\#1 \\$key of static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertArrayHasKey\\(\\) expects int\\|string, array\\<int, string\\>\\|string given\\.$#"
+			message: '#^Parameter \#1 \$key of static method PHPUnit\\Framework\\Assert\:\:assertArrayHasKey\(\) expects int\|string, array\<int, string\>\|string given\.$#'
+			identifier: argument.type
 			count: 1
 			path: src/FormRequest/TestValidationResult.php
 
 		-
-			message: "#^Part \\$attribute \\(array\\<int, string\\>\\|string\\) of encapsed string cannot be cast to string\\.$#"
+			message: '#^Part \$attribute \(array\<int, string\>\|string\) of encapsed string cannot be cast to string\.$#'
+			identifier: encapsedStringPart.nonString
 			count: 1
 			path: src/FormRequest/TestValidationResult.php
 
 		-
-			message: "#^Parameter \\#2 \\$transformation of method Soyhuce\\\\Testing\\\\Match\\\\ValueMatcher\\:\\:match\\(\\) expects callable\\(\\)\\: mixed, array\\<0\\|1\\|string, mixed\\> given\\.$#"
+			message: '#^Parameter \#2 \$transformation of method Soyhuce\\Testing\\Match\\ValueMatcher\:\:match\(\) expects callable\(\)\: mixed, array\<0\|1\|string, mixed\> given\.$#'
+			identifier: argument.type
 			count: 1
 			path: src/Match/Matcher.php
 
 		-
-			message: "#^Call to an undefined method Mockery\\\\ExpectationInterface\\:\\:andReturnUsing\\(\\)\\.$#"
+			message: '#^Call to an undefined method Mockery\\ExpectationInterface\:\:andReturnUsing\(\)\.$#'
+			identifier: method.notFound
 			count: 2
 			path: src/Mock/PendingActionMock.php
 
 		-
-			message: "#^Call to an undefined method Mockery\\\\ExpectationInterface\\:\\:never\\(\\)\\.$#"
+			message: '#^Call to an undefined method Mockery\\ExpectationInterface\:\:never\(\)\.$#'
+			identifier: method.notFound
 			count: 1
 			path: src/Mock/PendingActionMock.php
 
 		-
-			message: "#^Call to an undefined method Mockery\\\\ExpectationInterface\\:\\:withArgs\\(\\)\\.$#"
+			message: '#^Call to an undefined method Mockery\\ExpectationInterface\:\:withArgs\(\)\.$#'
+			identifier: method.notFound
 			count: 1
 			path: src/Mock/PendingActionMock.php
 
 		-
-			message: "#^Call to an undefined method Mockery\\\\ExpectationInterface\\:\\:zeroOrMoreTimes\\(\\)\\.$#"
+			message: '#^Call to an undefined method Mockery\\ExpectationInterface\:\:zeroOrMoreTimes\(\)\.$#'
+			identifier: method.notFound
 			count: 1
 			path: src/Mock/PendingActionMock.php
 
 		-
-			message: "#^Call to an undefined method Mockery\\\\ExpectationInterface\\|Mockery\\\\HigherOrderMessage\\:\\:andReturnUsing\\(\\)\\.$#"
+			message: '#^Call to an undefined method Mockery\\ExpectationInterface\|Mockery\\HigherOrderMessage\:\:andReturnUsing\(\)\.$#'
+			identifier: method.notFound
 			count: 1
 			path: src/Mock/PendingActionMock.php
 
 		-
-			message: "#^Access to an undefined property Soyhuce\\\\Testing\\\\TestResponse\\\\ContractAssertions\\:\\:\\$baseResponse\\.$#"
+			message: '#^Access to an undefined property Soyhuce\\Testing\\TestResponse\\ContractAssertions\:\:\$baseResponse\.$#'
+			identifier: property.notFound
 			count: 1
 			path: src/TestResponse/ContractAssertions.php
 
 		-
-			message: "#^Call to an undefined method Soyhuce\\\\Testing\\\\TestResponse\\\\DataAssertions\\:\\:assertJsonPathMissing\\(\\)\\.$#"
+			message: '#^Call to an undefined method Soyhuce\\Testing\\TestResponse\\DataAssertions\:\:assertJsonPathMissing\(\)\.$#'
+			identifier: method.notFound
 			count: 2
 			path: src/TestResponse/DataAssertions.php
 
 		-
-			message: "#^Method Soyhuce\\\\Testing\\\\TestResponse\\\\DataAssertions\\:\\:assertDataPath\\(\\) invoked with 2 parameters, 0 required\\.$#"
+			message: '#^Method Soyhuce\\Testing\\TestResponse\\DataAssertions\:\:assertDataPath\(\) invoked with 2 parameters, 0 required\.$#'
+			identifier: arguments.count
 			count: 1
 			path: src/TestResponse/DataAssertions.php
 
 		-
-			message: "#^Method Soyhuce\\\\Testing\\\\TestResponse\\\\DataAssertions\\:\\:assertDataPathCanonicalizing\\(\\) invoked with 2 parameters, 0 required\\.$#"
+			message: '#^Method Soyhuce\\Testing\\TestResponse\\DataAssertions\:\:assertDataPathCanonicalizing\(\) invoked with 2 parameters, 0 required\.$#'
+			identifier: arguments.count
 			count: 1
 			path: src/TestResponse/DataAssertions.php
 
 		-
-			message: "#^Access to an undefined property Soyhuce\\\\Testing\\\\TestResponse\\\\ViewAssertions\\:\\:\\$original\\.$#"
+			message: '#^Access to an undefined property Soyhuce\\Testing\\TestResponse\\ViewAssertions\:\:\$original\.$#'
+			identifier: property.notFound
 			count: 1
 			path: src/TestResponse/ViewAssertions.php
 

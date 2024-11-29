@@ -7,7 +7,7 @@ use PHPUnit\Framework\Assert as PHPUnit;
 use stdClass;
 
 /**
- * @mixin \Illuminate\Testing\TestResponse
+ * @mixin \Illuminate\Testing\TestResponse<\Symfony\Component\HttpFoundation\Response>
  * @method self assertValidRequest()
  * @method self assertValidResponse(int $status)
  */

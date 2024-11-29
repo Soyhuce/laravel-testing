@@ -5,7 +5,7 @@ namespace Soyhuce\Testing\TestResponse;
 use Closure;
 
 /**
- * @mixin \Illuminate\Testing\TestResponse
+ * @mixin \Illuminate\Testing\TestResponse<\Symfony\Component\HttpFoundation\Response>
  */
 class DataAssertions
 {
