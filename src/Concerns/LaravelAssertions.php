@@ -52,10 +52,12 @@ trait LaravelAssertions
             $expected = new Collection($expected);
         }
 
-        $expected = Arr::isList($expected->all()) ? $expected->sort()->values() : $expected->sort();
+        $sort = fn (mixed $item) => $item instanceof Model ? $item->getKey() : $item;
+
+        $expected = Arr::isList($expected->all()) ? $expected->sortBy($sort)->values() : $expected->sortBy($sort);
 
         if ($actual instanceof Collection) {
-            $actual = Arr::isList($actual->all()) ? $actual->sort()->values() : $actual->sort();
+            $actual = Arr::isList($actual->all()) ? $actual->sortBy($sort)->values() : $actual->sortBy($sort);
         }
 
         $constraint = new CollectionEquals($expected);
