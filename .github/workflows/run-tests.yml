@@ -23,6 +23,8 @@ jobs:
         exclude:
           - php: 8.4
             stability: prefer-lowest
+          - phpunit: ^10.0
+            stability: prefer-lowest
 
     name: P${{ matrix.php }} - L${{ matrix.laravel }} - PU${{ matrix.phpunit }}- ${{ matrix.stability }} - ${{ matrix.os }}
 
