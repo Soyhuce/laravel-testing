@@ -133,6 +133,30 @@ class MatcherTest extends TestCase
 
     /**
      * @test
+     * @covers ::collectionEqualsCanonicalizing
+     */
+    public function matcherMatchesCollectionCanonicalizing(): void
+    {
+        $collection = new Collection([1, 2]);
+        $result = Matcher::collectionEqualsCanonicalizing([2, 1])($collection);
+
+        $this->assertTrue($result);
+    }
+
+    /**
+     * @test
+     * @covers ::collectionEqualsCanonicalizing
+     */
+    public function matcherFailsMatchingCollectionCanonicalizing(): void
+    {
+        $this->expectException(ExpectationFailedException::class);
+
+        $collection = new Collection([1, 2]);
+        Matcher::collectionEqualsCanonicalizing([2, 1, 3])($collection);
+    }
+
+    /**
+     * @test
      * @covers ::make
      */
     public function matcherMatchesData(): void
