@@ -59,6 +59,10 @@ class CollectionEqualsTest extends TestCase
                 new Collection([new User(['id' => 2, 'name' => 'Jack']), new User(['id' => 1, 'name' => 'Peter'])]),
             ],
             [
+                new Collection([new User(['name' => 'John', 'id' => 1]), new User(['name' => 'Jack', 'id' => 2])]),
+                new Collection([new User(['id' => 2, 'name' => 'Jack']), new User(['id' => 1, 'name' => 'Peter'])]),
+            ],
+            [
                 new Collection([
                     'John' => new User(['id' => 1, 'name' => 'John']),
                     'Jack' => new User(['id' => 2, 'name' => 'Jack']),
