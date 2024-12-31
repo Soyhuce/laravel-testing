@@ -66,6 +66,18 @@ class Matcher
         };
     }
 
+    /**
+     * @param array<array-key, mixed>|Collection<array-key, mixed> $expected
+     */
+    public static function collectionEqualsCanonicalizing(Collection|array $expected): Closure
+    {
+        return function (mixed $actual) use ($expected) {
+            LaravelAssert::assertCollectionEqualsCanonicalizing($expected, $actual);
+
+            return true;
+        };
+    }
+
     public static function dataEquals(\Spatie\LaravelData\Data $expected): Closure
     {
         return function (mixed $actual) use ($expected) {

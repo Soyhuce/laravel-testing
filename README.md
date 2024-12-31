@@ -265,7 +265,7 @@ $this->mock(DeleteUser::class)
     ->once();
 ```
 
-For Collections, we can use `Matcher::collectionEquals()`.
+For Collections, we can use `Matcher::collectionEquals()` or `Matcher::collectionEqualsCanonicalizing`.
 
 For more complex cases, we can use `Matcher::make`.
 
