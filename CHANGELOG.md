@@ -2,6 +2,15 @@
 
 All notable changes to `laravel-testing` will be documented in this file.
 
+## 2.13.0 - 2025-02-24
+
+### What's Changed
+
+* Bump dependabot/fetch-metadata from 2.2.0 to 2.3.0 by @dependabot in https://github.com/Soyhuce/laravel-testing/pull/47
+* Run tests with Laravel 12 by @bastien-phi in https://github.com/Soyhuce/laravel-testing/pull/48
+
+**Full Changelog**: https://github.com/Soyhuce/laravel-testing/compare/2.12.0...2.13.0
+
 ## 2.12.0 - 2025-02-24
 
 ### What's Changed
