@@ -2,6 +2,15 @@
 
 All notable changes to `laravel-testing` will be documented in this file.
 
+## 2.12.0 - 2025-02-24
+
+### What's Changed
+
+* Fix collection equals canonicalizing by @bastien-phi in https://github.com/Soyhuce/laravel-testing/pull/45
+* Introduce matcher collectionEqualsCanonicalizing by @mulertech in https://github.com/Soyhuce/laravel-testing/pull/46
+
+**Full Changelog**: https://github.com/Soyhuce/laravel-testing/compare/2.11.0...2.12.0
+
 ## 2.11.0 - 2024-11-29
 
 ### What's Changed
