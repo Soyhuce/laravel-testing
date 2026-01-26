@@ -4,13 +4,14 @@ namespace Soyhuce\Testing\Tests\Unit;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\ExpectationFailedException;
 use Soyhuce\Testing\Concerns\LaravelAssertions;
 use Soyhuce\Testing\Tests\TestCase;
 
-/**
- * @covers \Soyhuce\Testing\Constraints\IsModel
- */
+#[CoversClass(\Soyhuce\Testing\Constraints\IsModel::class)]
 class IsModelTest extends TestCase
 {
     use LaravelAssertions;
@@ -32,10 +33,8 @@ class IsModelTest extends TestCase
         ];
     }
 
-    /**
-     * @test
-     * @dataProvider sameModel
-     */
+    #[Test]
+    #[DataProvider('sameModel')]
     public function modelsAreEqual(Model $first, Model $second): void
     {
         $this->assertIsModel($first, $second);
@@ -52,10 +51,8 @@ class IsModelTest extends TestCase
         ];
     }
 
-    /**
-     * @test
-     * @dataProvider differentModels
-     */
+    #[Test]
+    #[DataProvider('differentModels')]
     public function modelsAreDifferent(Model $first, Model $second): void
     {
         $this->expectException(ExpectationFailedException::class);

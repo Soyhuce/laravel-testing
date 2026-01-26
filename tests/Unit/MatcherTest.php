@@ -6,15 +6,15 @@ use DateTimeImmutable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Collection;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\ExpectationFailedException;
 use Soyhuce\Testing\Match\Matcher;
 use Soyhuce\Testing\Tests\Fixtures\SimpleData;
 use Soyhuce\Testing\Tests\TestCase;
 use Spatie\LaravelData\DataCollection;
 
-/**
- * @coversDefaultClass \Soyhuce\Testing\Match\Matcher
- */
+#[CoversClass(Matcher::class)]
 class MatcherTest extends TestCase
 {
     protected function setUp(): void
@@ -24,10 +24,7 @@ class MatcherTest extends TestCase
         Model::unguard();
     }
 
-    /**
-     * @test
-     * @covers ::make
-     */
+    #[Test]
     public function matcherMatchesArguments(): void
     {
         $result = Matcher::make('foo', 1, true)('foo', 1, true);
@@ -35,10 +32,7 @@ class MatcherTest extends TestCase
         $this->assertTrue($result);
     }
 
-    /**
-     * @test
-     * @covers ::make
-     */
+    #[Test]
     public function matcherMatchesCallbacks(): void
     {
         $result = Matcher::make(fn ($string) => $this->assertEquals('foo', $string))('foo');
@@ -46,30 +40,21 @@ class MatcherTest extends TestCase
         $this->assertTrue($result);
     }
 
-    /**
-     * @test
-     * @covers ::make
-     */
+    #[Test]
     public function matcherReturnsFalseWhenCallback(): void
     {
         $result = Matcher::make(fn ($string) => false)('foo');
         $this->assertFalse($result);
     }
 
-    /**
-     * @test
-     * @covers ::make
-     */
+    #[Test]
     public function matcherFailsWithError(): void
     {
         $this->expectException(ExpectationFailedException::class);
         Matcher::make('foo')('bar');
     }
 
-    /**
-     * @test
-     * @covers ::isModel
-     */
+    #[Test]
     public function matcherMatchesModelOrCollection(): void
     {
         $user = new User(['id' => 1]);
@@ -83,10 +68,7 @@ class MatcherTest extends TestCase
         $this->assertTrue($result);
     }
 
-    /**
-     * @test
-     * @covers ::isModel
-     */
+    #[Test]
     public function matcherMatchesModel(): void
     {
         $user = new User(['id' => 1]);
@@ -95,10 +77,7 @@ class MatcherTest extends TestCase
         $this->assertTrue($result);
     }
 
-    /**
-     * @test
-     * @covers ::isModel
-     */
+    #[Test]
     public function matcherFailsMatchingModel(): void
     {
         $this->expectException(ExpectationFailedException::class);
@@ -107,10 +86,7 @@ class MatcherTest extends TestCase
         Matcher::isModel($user)(new User(['id' => 2]));
     }
 
-    /**
-     * @test
-     * @covers ::collectionEquals
-     */
+    #[Test]
     public function matcherMatchesCollection(): void
     {
         $collection = new Collection([1, 2]);
@@ -119,10 +95,7 @@ class MatcherTest extends TestCase
         $this->assertTrue($result);
     }
 
-    /**
-     * @test
-     * @covers ::collectionEquals
-     */
+    #[Test]
     public function matcherFailsMatchingCollection(): void
     {
         $this->expectException(ExpectationFailedException::class);
@@ -131,10 +104,7 @@ class MatcherTest extends TestCase
         Matcher::collectionEquals([1, 2, 3])($collection);
     }
 
-    /**
-     * @test
-     * @covers ::collectionEqualsCanonicalizing
-     */
+    #[Test]
     public function matcherMatchesCollectionCanonicalizing(): void
     {
         $collection = new Collection([1, 2]);
@@ -143,10 +113,7 @@ class MatcherTest extends TestCase
         $this->assertTrue($result);
     }
 
-    /**
-     * @test
-     * @covers ::collectionEqualsCanonicalizing
-     */
+    #[Test]
     public function matcherFailsMatchingCollectionCanonicalizing(): void
     {
         $this->expectException(ExpectationFailedException::class);
@@ -155,10 +122,7 @@ class MatcherTest extends TestCase
         Matcher::collectionEqualsCanonicalizing([2, 1, 3])($collection);
     }
 
-    /**
-     * @test
-     * @covers ::make
-     */
+    #[Test]
     public function matcherMatchesData(): void
     {
         $expected = new SimpleData('foo', 1);
@@ -169,10 +133,7 @@ class MatcherTest extends TestCase
         $this->assertTrue($result);
     }
 
-    /**
-     * @test
-     * @covers ::make
-     */
+    #[Test]
     public function matcherFailsMatchingData(): void
     {
         $expected = new SimpleData('foo', 1);
@@ -182,10 +143,7 @@ class MatcherTest extends TestCase
         Matcher::make($expected)($value);
     }
 
-    /**
-     * @test
-     * @covers ::make
-     */
+    #[Test]
     public function matcherMatchesCollectionOfData(): void
     {
         $expected = new SimpleData('foo', 1);
@@ -196,10 +154,7 @@ class MatcherTest extends TestCase
         $this->assertTrue($result);
     }
 
-    /**
-     * @test
-     * @covers ::make
-     */
+    #[Test]
     public function matcherMatchesDataCollections(): void
     {
         $expected = new DataCollection(SimpleData::class, [
@@ -216,10 +171,7 @@ class MatcherTest extends TestCase
         $this->assertTrue($result);
     }
 
-    /**
-     * @test
-     * @covers ::make
-     */
+    #[Test]
     public function matcherFailsToMatchDataCollections(): void
     {
         $expected = new DataCollection(SimpleData::class, [
@@ -235,10 +187,7 @@ class MatcherTest extends TestCase
         Matcher::make($expected)($value);
     }
 
-    /**
-     * @test
-     * @covers ::make
-     */
+    #[Test]
     public function matcherMatchesObject(): void
     {
         $expected = new DateTimeImmutable('2021-01-01 12:00:00');
@@ -248,10 +197,7 @@ class MatcherTest extends TestCase
         $this->assertTrue($result);
     }
 
-    /**
-     * @test
-     * @covers ::make
-     */
+    #[Test]
     public function matcherMatchesArray(): void
     {
         $expected = [0, 'foo'];
@@ -261,10 +207,7 @@ class MatcherTest extends TestCase
         $this->assertTrue($result);
     }
 
-    /**
-     * @test
-     * @covers ::match
-     */
+    #[Test]
     public function valueMatcherMatchesAttribute(): void
     {
         $user = new User(['id' => 1]);
@@ -273,10 +216,7 @@ class MatcherTest extends TestCase
         $this->assertTrue($result);
     }
 
-    /**
-     * @test
-     * @covers ::match
-     */
+    #[Test]
     public function valueMatcherFailsMatchingAttribute(): void
     {
         $this->expectException(ExpectationFailedException::class);
@@ -285,10 +225,7 @@ class MatcherTest extends TestCase
         Matcher::match(2, fn ($u) => $u->id)($user);
     }
 
-    /**
-     * @test
-     * @covers ::match
-     */
+    #[Test]
     public function valueMatcherCanMatchMultipleArguments(): void
     {
         $user = new User(['id' => 1, 'name' => 'John']);
@@ -297,10 +234,7 @@ class MatcherTest extends TestCase
         $this->assertTrue($result);
     }
 
-    /**
-     * @test
-     * @covers ::match
-     */
+    #[Test]
     public function valueMatcherCanFailMatchingMultipleArguments(): void
     {
         $this->expectException(ExpectationFailedException::class);
@@ -310,10 +244,7 @@ class MatcherTest extends TestCase
         Matcher::match(1, fn ($u) => $u->id)->match('Johny', fn ($u) => $u->name)($user);
     }
 
-    /**
-     * @test
-     * @covers ::match
-     */
+    #[Test]
     public function propertiesCanBeGivenAsNamedParameters(): void
     {
         $user = new User(['id' => 1, 'name' => 'John']);
@@ -322,10 +253,7 @@ class MatcherTest extends TestCase
         $this->assertTrue($result);
     }
 
-    /**
-     * @test
-     * @covers ::match
-     */
+    #[Test]
     public function matcherCanBeConvertedToClosure(): void
     {
         $user = new User(['id' => 1, 'name' => 'John']);
@@ -334,10 +262,7 @@ class MatcherTest extends TestCase
         $this->assertTrue($result);
     }
 
-    /**
-     * @test
-     * @covers ::of
-     */
+    #[Test]
     public function matcherMatchesClass(): void
     {
         $user = new User();
@@ -346,10 +271,7 @@ class MatcherTest extends TestCase
         $this->assertTrue($result);
     }
 
-    /**
-     * @test
-     * @covers ::of
-     */
+    #[Test]
     public function ofMatchesStrictClass(): void
     {
         $this->expectException(ExpectationFailedException::class);

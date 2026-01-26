@@ -4,12 +4,13 @@ namespace Soyhuce\Testing\Tests\Unit;
 
 use Illuminate\Http\Response;
 use Illuminate\Testing\TestResponse;
+use PHPUnit\Framework\Attributes\CoversNothing;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\ExpectationFailedException;
 use Soyhuce\Testing\Tests\TestCase;
 
-/**
- * @coversNothing
- */
+#[CoversNothing]
 class JsonAssertionsTest extends TestCase
 {
     public static function goodAssertJsonPathMissingData()
@@ -38,11 +39,8 @@ class JsonAssertionsTest extends TestCase
         ];
     }
 
-    /**
-     * @test
-     * @covers       \Soyhuce\Testing\TestResponse\JsonAssertions::assertJsonPathMissing
-     * @dataProvider goodAssertJsonPathMissingData
-     */
+    #[Test]
+    #[DataProvider('goodAssertJsonPathMissingData')]
     public function assertJsonPathMissingIsSuccessfulWhenItemIsNotInResponse(string $key, mixed $item, array $actual): void
     {
         $response = new TestResponse(new Response($actual));
@@ -66,11 +64,8 @@ class JsonAssertionsTest extends TestCase
         ];
     }
 
-    /**
-     * @test
-     * @covers       \Soyhuce\Testing\TestResponse\JsonAssertions::assertJsonPathMissing
-     * @dataProvider badAssertJsonPathMissingData
-     */
+    #[Test]
+    #[DataProvider('badAssertJsonPathMissingData')]
     public function assertJsonPathMissingIsNotSuccessfulWhenDataContainsTheItem(string $key, mixed $item, array $actual): void
     {
         $response = new TestResponse(new Response($actual));
@@ -79,10 +74,7 @@ class JsonAssertionsTest extends TestCase
         $response->assertJsonPathMissing($key, $item);
     }
 
-    /**
-     * @test
-     * @covers \Soyhuce\Testing\TestResponse\JsonAssertions::assertJsonMessage
-     */
+    #[Test]
     public function assertJsonMessageIsSuccessfulWhenMessageMatches(): void
     {
         $response = new TestResponse(new Response(['message' => 'Hello world']));
@@ -98,11 +90,8 @@ class JsonAssertionsTest extends TestCase
         ];
     }
 
-    /**
-     * @test
-     * @covers       \Soyhuce\Testing\TestResponse\JsonAssertions::assertJsonMessage
-     * @dataProvider badAssertJsonMessageData
-     */
+    #[Test]
+    #[DataProvider('badAssertJsonMessageData')]
     public function assertJsonMessageFailsWhenMessageDoesNotMatch(array $content): void
     {
         $response = new TestResponse(new Response($content));
@@ -111,10 +100,7 @@ class JsonAssertionsTest extends TestCase
         $response->assertJsonMessage('Hello world');
     }
 
-    /**
-     * @test
-     * @covers \Soyhuce\Testing\TestResponse\JsonAssertions::assertSimplePaginated
-     */
+    #[Test]
     public function assertSimplePaginatedIsSuccessfulWhenSimplePaginated(): void
     {
         $response = new TestResponse(new Response([
@@ -137,10 +123,7 @@ class JsonAssertionsTest extends TestCase
         $response->assertSimplePaginated();
     }
 
-    /**
-     * @test
-     * @covers       \Soyhuce\Testing\TestResponse\JsonAssertions::assertSimplePaginated
-     */
+    #[Test]
     public function assertSimplePaginatedFailsWhenNotSimplePaginated(): void
     {
         $response = new TestResponse(new Response([
@@ -151,10 +134,7 @@ class JsonAssertionsTest extends TestCase
         $response->assertSimplePaginated();
     }
 
-    /**
-     * @test
-     * @covers \Soyhuce\Testing\TestResponse\JsonAssertions::assertPaginated
-     */
+    #[Test]
     public function assertPaginatedIsSuccessfulWhenPaginated(): void
     {
         $response = new TestResponse(new Response([
@@ -179,10 +159,7 @@ class JsonAssertionsTest extends TestCase
         $response->assertPaginated();
     }
 
-    /**
-     * @test
-     * @covers       \Soyhuce\Testing\TestResponse\JsonAssertions::assertPaginated
-     */
+    #[Test]
     public function assertPaginatedFailsWhenNotPaginated(): void
     {
         $response = new TestResponse(new Response([

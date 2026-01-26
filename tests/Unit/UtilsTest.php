@@ -3,18 +3,15 @@
 namespace Soyhuce\Testing\Tests\Unit;
 
 use Illuminate\Support\Str;
+use PHPUnit\Framework\Attributes\CoversNothing;
+use PHPUnit\Framework\Attributes\Test;
 use Soyhuce\Testing\Tests\TestCase;
 use function Soyhuce\Testing\capture;
 
-/**
- * @coversNothing
- */
+#[CoversNothing]
 class UtilsTest extends TestCase
 {
-    /**
-     * @test
-     * @covers \Soyhuce\Testing\capture
-     */
+    #[Test]
     public function captureCapturesReturnValue(): void
     {
         $callback = capture(

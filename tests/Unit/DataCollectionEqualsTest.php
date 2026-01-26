@@ -2,15 +2,16 @@
 
 namespace Soyhuce\Testing\Tests\Unit;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\ExpectationFailedException;
 use Soyhuce\Testing\Concerns\LaravelAssertions;
 use Soyhuce\Testing\Tests\Fixtures\SimpleData;
 use Soyhuce\Testing\Tests\TestCase;
 use Spatie\LaravelData\DataCollection;
 
-/**
- * @covers \Soyhuce\Testing\Constraints\DataCollectionEquals
- */
+#[CoversClass(\Soyhuce\Testing\Constraints\DataCollectionEquals::class)]
 class DataCollectionEqualsTest extends TestCase
 {
     use LaravelAssertions;
@@ -37,10 +38,8 @@ class DataCollectionEqualsTest extends TestCase
         ];
     }
 
-    /**
-     * @test
-     * @dataProvider sameDataCollection
-     */
+    #[Test]
+    #[DataProvider('sameDataCollection')]
     public function dataCollectionsAreEqual(mixed $expected, mixed $actual): void
     {
         $this->assertDataCollectionEquals($expected(), $actual());
@@ -84,10 +83,8 @@ class DataCollectionEqualsTest extends TestCase
         ];
     }
 
-    /**
-     * @test
-     * @dataProvider differentDataCollections
-     */
+    #[Test]
+    #[DataProvider('differentDataCollections')]
     public function dataCollectionsAreDifferent(mixed $expected, mixed $actual): void
     {
         $this->expectException(ExpectationFailedException::class);

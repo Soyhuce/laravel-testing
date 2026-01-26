@@ -5,20 +5,18 @@ namespace Soyhuce\Testing\Tests\Unit;
 use Mockery;
 use Mockery\Exception\InvalidCountException;
 use PHPUnit\Framework\AssertionFailedError;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use Soyhuce\Testing\Concerns\MocksActions;
 use Soyhuce\Testing\Tests\Fixtures\BasicAction;
 use Soyhuce\Testing\Tests\TestCase;
 
-/**
- * @covers \Soyhuce\Testing\Concerns\MocksActions
- */
+#[CoversClass(MocksActions::class)]
 class MocksActionTest extends TestCase
 {
     use MocksActions;
 
-    /**
-     * @test
-     */
+    #[Test]
     public function theActionCanBeMocked(): void
     {
         $this->mockAction(BasicAction::class)
@@ -32,9 +30,7 @@ class MocksActionTest extends TestCase
         $this->assertEquals(4, $result);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function receivesTheArgumentInReturnsCallback(): void
     {
         $this->mockAction(BasicAction::class)
@@ -48,9 +44,7 @@ class MocksActionTest extends TestCase
         $this->assertEquals(5, $result);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function theActionFailsIfNotCalled(): void
     {
         $this->mockAction(BasicAction::class)
@@ -63,9 +57,7 @@ class MocksActionTest extends TestCase
         Mockery::close();
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function theActionFailsIfCalledWithOtherArgument(): void
     {
         $this->mockAction(BasicAction::class)
@@ -78,9 +70,7 @@ class MocksActionTest extends TestCase
         app(BasicAction::class)->execute(3);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function theActionCanBeNeverCalled(): void
     {
         $this->mockAction(BasicAction::class)
@@ -89,9 +79,7 @@ class MocksActionTest extends TestCase
         $this->assertTrue(true);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function theActionFailsIfCalledButDeclaredNeverCalled(): void
     {
         $this->mockAction(BasicAction::class)
