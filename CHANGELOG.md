@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-testing` will be documented in this file.
 
+## 2.14.0 - 2026-02-26
+
+### What's Changed
+
+* Add support for PHP 8.5 in https://github.com/Soyhuce/laravel-testing/pull/55
+
+**Full Changelog**: https://github.com/Soyhuce/laravel-testing/compare/2.13.0...2.14.0
+
 ## 2.13.0 - 2025-02-24
 
 ### What's Changed
