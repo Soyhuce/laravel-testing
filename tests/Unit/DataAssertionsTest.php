@@ -4,18 +4,16 @@ namespace Soyhuce\Testing\Tests\Unit;
 
 use Illuminate\Http\Response;
 use Illuminate\Testing\TestResponse;
+use PHPUnit\Framework\Attributes\CoversNothing;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\ExpectationFailedException;
 use Soyhuce\Testing\Tests\TestCase;
 
-/**
- * @coversNothing
- */
+#[CoversNothing]
 class DataAssertionsTest extends TestCase
 {
-    /**
-     * @test
-     * @covers \Soyhuce\Testing\TestResponse\DataAssertions::assertData
-     */
+    #[Test]
     public function assertDataIsSuccessfulWhenDataMatches(): void
     {
         $response = new TestResponse(new Response([
@@ -50,11 +48,8 @@ class DataAssertionsTest extends TestCase
         ];
     }
 
-    /**
-     * @test
-     * @covers       \Soyhuce\Testing\TestResponse\DataAssertions::assertData
-     * @dataProvider badAssertDataData
-     */
+    #[Test]
+    #[DataProvider('badAssertDataData')]
     public function assertDataIsNotSuccessfulWhenDataDoesNotMatch(array $expected, array $actual): void
     {
         $response = new TestResponse(new Response(['data' => $actual]));
@@ -75,11 +70,8 @@ class DataAssertionsTest extends TestCase
         ];
     }
 
-    /**
-     * @test
-     * @covers       \Soyhuce\Testing\TestResponse\DataAssertions::assertDataPath
-     * @dataProvider goodAssertDataPathData
-     */
+    #[Test]
+    #[DataProvider('goodAssertDataPathData')]
     public function assertDataPathIsSuccessfulWhenDataMatches(string $path, mixed $expected, array $actual): void
     {
         $response = new TestResponse(new Response(['data' => $actual]));
@@ -110,11 +102,8 @@ class DataAssertionsTest extends TestCase
         ];
     }
 
-    /**
-     * @test
-     * @covers       \Soyhuce\Testing\TestResponse\DataAssertions::assertDataPath
-     * @dataProvider badAssertDataPathData
-     */
+    #[Test]
+    #[DataProvider('badAssertDataPathData')]
     public function assertDataPathIsNotSuccessfulWhenDataDoesNotMatch(string $path, mixed $expected, array $actual): void
     {
         $response = new TestResponse(new Response(['data' => $actual]));
@@ -144,11 +133,8 @@ class DataAssertionsTest extends TestCase
         ];
     }
 
-    /**
-     * @test
-     * @covers       \Soyhuce\Testing\TestResponse\DataAssertions::assertDataPathCanonicalizing
-     * @dataProvider goodAssertDataPathCanonicalizingData
-     */
+    #[Test]
+    #[DataProvider('goodAssertDataPathCanonicalizingData')]
     public function assertDataPathCanonicalizingIsSuccessfulWhenDataMatches(
         string $path,
         array $expected,
@@ -174,11 +160,8 @@ class DataAssertionsTest extends TestCase
         ];
     }
 
-    /**
-     * @test
-     * @covers       \Soyhuce\Testing\TestResponse\DataAssertions::assertDataPathCanonicalizing
-     * @dataProvider badAssertDataPathCanonicalizingData
-     */
+    #[Test]
+    #[DataProvider('badAssertDataPathCanonicalizingData')]
     public function assertDataPathCanonicalizingIsNotSuccessfulWhenDataDoesNotMatch(string $path, mixed $expected, array $actual): void
     {
         $response = new TestResponse(new Response(['data' => $actual]));
@@ -187,10 +170,7 @@ class DataAssertionsTest extends TestCase
         $response->assertDataPathCanonicalizing($path, $expected);
     }
 
-    /**
-     * @test
-     * @covers \Soyhuce\Testing\TestResponse\DataAssertions::assertDataPaths
-     */
+    #[Test]
     public function assertDataPathsIsSuccessful(): void
     {
         $response = new TestResponse(new Response(['data' => ['foo' => 'bar', 'titi' => ['toto' => 'tata']]]));
@@ -213,10 +193,7 @@ class DataAssertionsTest extends TestCase
         ];
     }
 
-    /**
-     * @test
-     * @covers \Soyhuce\Testing\TestResponse\DataAssertions::assertDataPathsCanonicalizing
-     */
+    #[Test]
     public function assertDataPathsCanonicalizingIsSuccessful(): void
     {
         $data = [
@@ -251,11 +228,8 @@ class DataAssertionsTest extends TestCase
         ]);
     }
 
-    /**
-     * @test
-     * @covers       \Soyhuce\Testing\TestResponse\DataAssertions::assertDataMissing
-     * @dataProvider goodAssertDataMissingData
-     */
+    #[Test]
+    #[DataProvider('goodAssertDataMissingData')]
     public function assertDataMissingIsSuccessfulWhenItemIsNotInResponse(mixed $item, array $actual): void
     {
         $response = new TestResponse(new Response(['data' => $actual]));
@@ -275,11 +249,8 @@ class DataAssertionsTest extends TestCase
         ];
     }
 
-    /**
-     * @test
-     * @covers       \Soyhuce\Testing\TestResponse\DataAssertions::assertDataPath
-     * @dataProvider badAssertDataMissingData
-     */
+    #[Test]
+    #[DataProvider('badAssertDataMissingData')]
     public function assertDataMissingIsNotSuccessfulWhenDataContainsTheItem(mixed $item, array $actual): void
     {
         $response = new TestResponse(new Response(['data' => $actual]));
@@ -306,11 +277,8 @@ class DataAssertionsTest extends TestCase
         ];
     }
 
-    /**
-     * @test
-     * @covers       \Soyhuce\Testing\TestResponse\DataAssertions::assertDataPathMissing
-     * @dataProvider goodAssertDataPathMissingData
-     */
+    #[Test]
+    #[DataProvider('goodAssertDataPathMissingData')]
     public function assertDataPathMissingIsSuccessfulWhenItemIsNotInResponse(string $key, mixed $item, array $actual): void
     {
         $response = new TestResponse(new Response(['data' => $actual]));
@@ -330,11 +298,8 @@ class DataAssertionsTest extends TestCase
         ];
     }
 
-    /**
-     * @test
-     * @covers       \Soyhuce\Testing\TestResponse\DataAssertions::assertDataPathMissing
-     * @dataProvider badAssertDataPathMissingData
-     */
+    #[Test]
+    #[DataProvider('badAssertDataPathMissingData')]
     public function assertDataPathMissingIsNotSuccessfulWhenDataContainsTheItem(string $key, mixed $item, array $actual): void
     {
         $response = new TestResponse(new Response(['data' => $actual]));

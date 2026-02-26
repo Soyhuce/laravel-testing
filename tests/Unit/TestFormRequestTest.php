@@ -7,6 +7,8 @@ use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Hash;
 use PHPUnit\Framework\AssertionFailedError;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\ExpectationFailedException;
 use Soyhuce\Testing\Concerns\TestsFormRequests;
 use Soyhuce\Testing\Tests\Fixtures\FormRequests\CreateUserRequest;
@@ -15,17 +17,12 @@ use Soyhuce\Testing\Tests\Fixtures\FormRequests\UpdatePasswordRequest;
 use Soyhuce\Testing\Tests\Fixtures\FormRequests\WithPrepareValidationRequest;
 use Soyhuce\Testing\Tests\TestCase;
 
-/**
- * @coversDefaultClass \Soyhuce\Testing\FormRequest\TestFormRequest
- */
+#[CoversClass(\Soyhuce\Testing\FormRequest\TestFormRequest::class)]
 class TestFormRequestTest extends TestCase
 {
     use TestsFormRequests;
 
-    /**
-     * @test
-     * @covers ::validate
-     */
+    #[Test]
     public function theFormRequestIsValid(): void
     {
         $this->createRequest(CreateUserRequest::class)
@@ -36,10 +33,7 @@ class TestFormRequestTest extends TestCase
             ->assertPasses();
     }
 
-    /**
-     * @test
-     * @covers ::validate
-     */
+    #[Test]
     public function theFormRequestIsValidatesValidatedDaa(): void
     {
         $this->createRequest(CreateUserRequest::class)
@@ -55,10 +49,7 @@ class TestFormRequestTest extends TestCase
             ]);
     }
 
-    /**
-     * @test
-     * @covers ::validate
-     */
+    #[Test]
     public function theFormRequestFailsToBeInvalid(): void
     {
         $this->expectException(ExpectationFailedException::class);
@@ -71,10 +62,7 @@ class TestFormRequestTest extends TestCase
             ->assertFails();
     }
 
-    /**
-     * @test
-     * @covers ::validate
-     */
+    #[Test]
     public function theFormRequestIsInvalid(): void
     {
         $this->createRequest(CreateUserRequest::class)
@@ -93,10 +81,7 @@ class TestFormRequestTest extends TestCase
             ]);
     }
 
-    /**
-     * @test
-     * @covers ::validate
-     */
+    #[Test]
     public function theFormRequestIsInvalidWithArrayOfMessages(): void
     {
         $this->createRequest(CreateUserRequest::class)
@@ -112,10 +97,7 @@ class TestFormRequestTest extends TestCase
             ]);
     }
 
-    /**
-     * @test
-     * @covers ::validate
-     */
+    #[Test]
     public function theFormRequestVerifiesTheMessage(): void
     {
         $this->expectException(AssertionFailedError::class);
@@ -130,10 +112,7 @@ class TestFormRequestTest extends TestCase
             ]);
     }
 
-    /**
-     * @test
-     * @covers ::validate
-     */
+    #[Test]
     public function theFormRequestVerifiesAnArrayOfMessages(): void
     {
         $this->expectException(AssertionFailedError::class);
@@ -153,10 +132,7 @@ class TestFormRequestTest extends TestCase
             ]);
     }
 
-    /**
-     * @test
-     * @covers ::validate
-     */
+    #[Test]
     public function theFormRequestFailsToBeValid(): void
     {
         $this->expectException(ExpectationFailedException::class);
@@ -169,10 +145,7 @@ class TestFormRequestTest extends TestCase
             ->assertPasses();
     }
 
-    /**
-     * @test
-     * @covers ::withFiles
-     */
+    #[Test]
     public function theFormRequestPassesValidationWithFile(): void
     {
         $this->createRequest(FileRequest::class)
@@ -181,10 +154,7 @@ class TestFormRequestTest extends TestCase
             ->assertPasses();
     }
 
-    /**
-     * @test
-     * @covers ::validate
-     */
+    #[Test]
     public function theFormRequestFailsValidationWithFile(): void
     {
         $this->createRequest(FileRequest::class)
@@ -194,20 +164,14 @@ class TestFormRequestTest extends TestCase
             ]);
     }
 
-    /**
-     * @test
-     * @covers ::validate
-     */
+    #[Test]
     public function theFormRequestPassesAuthorization(): void
     {
         $this->createRequest(CreateUserRequest::class)
             ->assertAuthorized();
     }
 
-    /**
-     * @test
-     * @covers ::validate
-     */
+    #[Test]
     public function theFormRequestFailsAuthorization(): void
     {
         Model::unguard();
@@ -217,10 +181,7 @@ class TestFormRequestTest extends TestCase
             ->assertUnauthorized();
     }
 
-    /**
-     * @test
-     * @covers ::by
-     */
+    #[Test]
     public function theUserIsInjectedInAuthGuard(): void
     {
         Model::unguard();
@@ -235,10 +196,7 @@ class TestFormRequestTest extends TestCase
             ->assertPasses();
     }
 
-    /**
-     * @test
-     * @covers ::validate
-     */
+    #[Test]
     public function prepareForValidationIsCalled(): void
     {
         Model::unguard();

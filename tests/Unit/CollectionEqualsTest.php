@@ -6,14 +6,15 @@ use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Collection;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\ExpectationFailedException;
 use Soyhuce\Testing\Concerns\LaravelAssertions;
 use Soyhuce\Testing\Tests\Fixtures\SimpleData;
 use Soyhuce\Testing\Tests\TestCase;
 
-/**
- * @covers \Soyhuce\Testing\Constraints\CollectionEquals
- */
+#[CoversClass(\Soyhuce\Testing\Constraints\CollectionEquals::class)]
 class CollectionEqualsTest extends TestCase
 {
     use LaravelAssertions;
@@ -97,19 +98,15 @@ class CollectionEqualsTest extends TestCase
         ];
     }
 
-    /**
-     * @test
-     * @dataProvider sameCollection
-     */
+    #[Test]
+    #[DataProvider('sameCollection')]
     public function collectionsAreEqual(mixed $first, mixed $second): void
     {
         $this->assertCollectionEquals($first, $second);
     }
 
-    /**
-     * @test
-     * @dataProvider sameUnorderedCollection
-     */
+    #[Test]
+    #[DataProvider('sameUnorderedCollection')]
     public function collectionsAreEqualCanonicalizing(mixed $first, mixed $second): void
     {
         $this->assertCollectionEqualsCanonicalizing($first, $second);
@@ -188,10 +185,8 @@ class CollectionEqualsTest extends TestCase
         ];
     }
 
-    /**
-     * @test
-     * @dataProvider differentCollections
-     */
+    #[Test]
+    #[DataProvider('differentCollections')]
     public function collectionsAreDifferent(mixed $first, mixed $second): void
     {
         $this->expectException(ExpectationFailedException::class);
@@ -199,10 +194,8 @@ class CollectionEqualsTest extends TestCase
         $this->assertCollectionEquals($first, $second);
     }
 
-    /**
-     * @test
-     * @dataProvider differentUnorderedCollections
-     */
+    #[Test]
+    #[DataProvider('differentUnorderedCollections')]
     public function collectionsAreDifferentCanonicalizing(mixed $first, mixed $second): void
     {
         $this->expectException(ExpectationFailedException::class);

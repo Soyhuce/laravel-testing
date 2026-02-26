@@ -5,20 +5,17 @@ namespace Soyhuce\Testing\Tests\Unit;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Resources\Json\JsonResource;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use Soyhuce\Testing\Concerns\TestsJsonResources;
 use Soyhuce\Testing\Tests\TestCase;
 
-/**
- * @coversDefaultClass \Soyhuce\Testing\Concerns\TestsJsonResources
- */
+#[CoversClass(TestsJsonResources::class)]
 class TestsJsonResourcesTest extends TestCase
 {
     use TestsJsonResources;
 
-    /**
-     * @test
-     * @covers ::createResponse
-     */
+    #[Test]
     public function theTestResponseIsCreatedFromTheResource(): void
     {
         Model::unguard();

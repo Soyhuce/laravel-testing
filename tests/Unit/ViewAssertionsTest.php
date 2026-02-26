@@ -4,18 +4,15 @@ namespace Soyhuce\Testing\Tests\Unit;
 
 use Illuminate\Http\Response;
 use Illuminate\Testing\TestResponse;
+use PHPUnit\Framework\Attributes\CoversNothing;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\ExpectationFailedException;
 use Soyhuce\Testing\Tests\TestCase;
 
-/**
- * @coversNothing
- */
+#[CoversNothing]
 class ViewAssertionsTest extends TestCase
 {
-    /**
-     * @test
-     * @covers \Soyhuce\Testing\TestResponse\ViewAssertions::assertViewHasNull
-     */
+    #[Test]
     public function assertAssertViewHasNullIsSuccessfulWhenDataValueIsNull(): void
     {
         $response = new TestResponse(
@@ -27,10 +24,7 @@ class ViewAssertionsTest extends TestCase
         $response->assertViewHasNull('value');
     }
 
-    /**
-     * @test
-     * @covers \Soyhuce\Testing\TestResponse\ViewAssertions::assertViewHasNull
-     */
+    #[Test]
     public function assertAssertViewHasNullIsSuccessfulWhenDataValueIsNotNull(): void
     {
         $response = new TestResponse(
@@ -43,10 +37,7 @@ class ViewAssertionsTest extends TestCase
         $response->assertViewHasNull('value');
     }
 
-    /**
-     * @test
-     * @covers \Soyhuce\Testing\TestResponse\ViewAssertions::assertViewHasNull
-     */
+    #[Test]
     public function assertAssertViewHasNullIsSuccessfulWhenDataValueIsNotGiven(): void
     {
         $response = new TestResponse(

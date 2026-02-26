@@ -63,12 +63,12 @@ class CollectionEquals extends Constraint
                 class_exists(\Spatie\LaravelData\Data::class) && $value instanceof \Spatie\LaravelData\Data => new DataEquals($value),
                 class_exists(\Spatie\LaravelData\DataCollection::class) && $value instanceof \Spatie\LaravelData\DataCollection => new DataCollectionEquals($value),
                 is_object($value) => new IsEqual($value),
-                is_array($value) => new self(Collection::make($value)),
+                is_array($value) => new self(collect($value)),
                 default => new IsIdentical($value),
             };
 
             $otherValue = match (true) {
-                is_array($value) => Collection::make($other->get($key)),
+                is_array($value) => collect((array) $other->get($key)),
                 default => $other->get($key),
             };
 

@@ -19,18 +19,6 @@ parameters:
 			path: src/Concerns/TestsJsonResources.php
 
 		-
-			message: '#^Unable to resolve the template type TMakeKey in call to method static method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:make\(\)$#'
-			identifier: argument.templateType
-			count: 1
-			path: src/Constraints/CollectionEquals.php
-
-		-
-			message: '#^Unable to resolve the template type TMakeValue in call to method static method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:make\(\)$#'
-			identifier: argument.templateType
-			count: 1
-			path: src/Constraints/CollectionEquals.php
-
-		-
 			message: '#^Unknown parameter \$mapPropertyNames in call to method Spatie\\LaravelData\\Data\:\:transform\(\)\.$#'
 			identifier: argument.unknown
 			count: 1
@@ -71,12 +59,6 @@ parameters:
 			identifier: method.nonObject
 			count: 1
 			path: src/FormRequest/TestFormRequest.php
-
-		-
-			message: '#^Parameter \#1 \$key of static method PHPUnit\\Framework\\Assert\:\:assertArrayHasKey\(\) expects int\|string, array\<int, string\>\|string given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/FormRequest/TestValidationResult.php
 
 		-
 			message: '#^Part \$attribute \(array\<int, string\>\|string\) of encapsed string cannot be cast to string\.$#'
@@ -149,4 +131,3 @@ parameters:
 			identifier: property.notFound
 			count: 1
 			path: src/TestResponse/ViewAssertions.php
-
